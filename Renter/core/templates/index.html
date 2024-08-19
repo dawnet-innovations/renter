@@ -1,49 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title> Home</title>
+{% extends 'base.html' %}
+{% load static %}
 
-    {% load static %}
+{% block title %}  HOME {% endblock %} 
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="custom.css/home.css">
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-    <link rel="stylesheet" href="custom.css/nav.css"> 
+{% block body %}
+<section class="m-">
 
-   
-
-    <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <style>
-   
-      </style>
-  </head>
+  <h1 class="fw-bold text-center m-3">COMPANY NAME</h1>
 
 
+<div class="container mt-5">
+    
+<div class="row">
+<div class="col">
+  <a href=" ">
+    <button type="button" class="btn btn-primary mx-3"> ADD BUILDING</button>
+  </a>
+</div>
+<div class="col">
+    <a href=" ">
+      <button type="button" class="btn btn-primary mx-3">ADD RENTER</button>
+    </a>
+  </div>
 
-<h1 class="text-primary">hi</h1>
 
+</div>
 
-
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="js/bootstrap.js"></script>
-
-<script src="https://unpkg.com/scrollreveal@4/dist/scrollreveal.min.js"></script>
-
-
-<script src="script.js"></script>
-
-</body>
+<br>
+                
+<p class="text-" style="font-size: 1.3rem">MONTH TOTAL : 0000 <a href="" class="btn btn-outline-danger btn-sm m-2">
+  VIEW
+</a>
+</p>
 
 
 
-</html>
+<div class="container scroll-animation-text my-5">
+  <div class="row">
+    <div class="col-md-6 col-lg-4 mb-4">
+      
+      <a href="" class="card" style="text-decoration: none;">
+        <div class="card-body text-center">
+          <i class="fa-solid fa-building" style="color: ; font-size: 3rem;"></i><br><br>
+          <h5 class="lead font-italic card-title fw-bold" style="font-size: 1.5rem;">BUILDING NAME</h5>
+          <p class="lead font-italic card-text fw-bold" style="font-size: 1rem;">PENDING RENTER :</p>
+          <p class="lead font-italic card-text fw-bold" style="font-size: 1rem;">AMOUNT :</p>
+      </div>
+    </a>
+
+    </div>
+    <div class="col-md-6 col-lg-4 mb-4">
+     
+      <a href="" class="card" style="text-decoration: none;">
+        <div class="card-body text-center">
+          <i class="fa-solid fa-building" style="color: ; font-size: 3rem;"></i><br><br>
+          <h5 class="lead font-italic card-title fw-bold" style="font-size: 1.5rem;">BUILDING NAME</h5>
+          <p class="lead font-italic card-text fw-bold" style="font-size: 1rem;">PENDING RENTER :</p>
+          <p class="lead font-italic card-text fw-bold" style="font-size: 1rem;">AMOUNT :</p>
+      </div>
+    </a>
+      
+    </div>
+    <div class="col-md-6 col-lg-4 mb-4">
+      
+      <a href="" class="card" style="text-decoration: none;">
+        <div class="card-body text-center">
+          <i class="fa-solid fa-building" style="color: ; font-size: 3rem;"></i><br><br>
+          <h5 class="lead font-italic card-title fw-bold" style="font-size: 1.5rem;">BUILDING NAME</h5>
+          <p class="lead font-italic card-text fw-bold" style="font-size: 1rem;">PENDING RENTER :</p>
+          <p class="lead font-italic card-text fw-bold" style="font-size: 1rem;">AMOUNT :</p>
+      </div>
+      
+    </a>
+    
+    </div>
+  </div>
+</div>
+
+{% endblock %} 
+

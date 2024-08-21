@@ -13,12 +13,12 @@
     
 <div class="row">
 <div class="col">
-  <a href=" ">
+  <a href="add-building">
     <button type="button" class="btn btn-primary mx-3"> ADD BUILDING</button>
   </a>
 </div>
 <div class="col">
-    <a href=" ">
+    <a href="add-renter">
       <button type="button" class="btn btn-primary mx-3">ADD RENTER</button>
     </a>
   </div>
@@ -37,18 +37,21 @@
 
 <div class="container scroll-animation-text my-5">
   <div class="row">
+    {% for build in building %}
     <div class="col-md-6 col-lg-4 mb-4">
       
-      <a href="" class="card" style="text-decoration: none;">
+      <a href="{% url 'building' %}" class="card" style="text-decoration: none;">
         <div class="card-body text-center">
           <i class="fa-solid fa-building" style="color: ; font-size: 3rem;"></i><br><br>
-          <h5 class="lead font-italic card-title fw-bold" style="font-size: 1.5rem;">BUILDING NAME</h5>
+          <h5 class="lead font-italic card-title fw-bold" style="font-size: 1.5rem;"> {{ build.name }} </h5>
           <p class="lead font-italic card-text fw-bold" style="font-size: 1rem;">PENDING RENTER :</p>
           <p class="lead font-italic card-text fw-bold" style="font-size: 1rem;">AMOUNT :</p>
       </div>
     </a>
 
     </div>
+    {% endfor %}
+
     <div class="col-md-6 col-lg-4 mb-4">
      
       <a href="" class="card" style="text-decoration: none;">

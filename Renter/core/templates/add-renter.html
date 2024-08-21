@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} RENTER {% endblock %} 
+
+{% block body %}
+
+<a href="javascript:window.history.back();">
+    <i style="font-size: 1.5rem; color: grey;" class="fa-solid fa-arrow-left mt-3 mx-3"></i>
+</a>
+
+<h1 class="fw-bold text-center m-3">ADD RENTER </h1>
+
+
+
+<div class="container mt-5">
+    <div class="form-container">
+        <form>
+            <div class="mb-3">
+                <label for="buildingName" class="form-label">Building </label>
+                <select id="buildingName" class="form-select">
+                    <option value="" disabled selected>Select a building</option>
+                    <option value="building1">Building 1</option>
+                    <option value="building2">Building 2</option>
+                    <option value="building3">Building 3</option>
+                    <option value="building4">Building 4</option>
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="buildingName" class="form-label">Name </label>
+                <input type="text" class="form-control" id="buildingName" placeholder="Enter Name ">
+            </div>
+            <div class="mb-3">
+                <label for="buildingName" class="form-label">Phone No </label>
+                <input type="text" class="form-control" id="buildingName" placeholder="Enter Name ">
+            </div>
+            <div class="mb-3">
+                <label for="buildingName" class="form-label">Whatsapp  </label>
+                <input type="text" class="form-control" id="buildingName" placeholder="optional ">
+            </div>
+            <div class="mb-3">
+                <label for="buildingName" class="form-label">Advance </label>
+                <input type="text" class="form-control" id="buildingName" placeholder="Enter Name ">
+            </div>
+            <div class="mb-3">
+                <label for="buildingName" class="form-label">Date </label>
+                <input type="date" class="form-control" id="datePicker">
+            </div>
+            <div class="mb-3">
+                <label for="buildingName" class="form-label">Rent </label>
+                <input type="text" class="form-control" id="buildingName" placeholder="Enter Name ">
+            </div>
+            <button type="submit" class="btn btn-primary w-100">ADD</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

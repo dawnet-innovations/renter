@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import render, redirect
-from .models import Building
+from .models import Building,Renter
+
 
 # Create your views here.
 
@@ -25,8 +26,31 @@ def index(request):
 
 
 def add_renter(request):
-    return render(request,'add-renter.html')
+    if request.method == "GET":
+        context = {
+            "building": Building.objects.all()
+        }
+        return render(request, "add-renter.html", context=context)
+    
+    if request.method == "POST":
 
+        building = request.POST.get("building")
+        name = request.POST.get("name")
+        phno = request.POST.get("phno")
+        whatsappp = request.POST.get("whatsappp")
+        advance = request.POST.get("advance")
+        rent = request.POST.get("rent")
+        
+        
+        renter = Renter(name=name,
+            phno=phno,
+            whatsappp=whatsappp,
+            advance=advance,
+            rent=rent)
+        renter.save()
+        
+        return redirect("/")
+    
 def building(request):
     return render(request,'building.html')
 

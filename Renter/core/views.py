@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import render, redirect
 from .models import Building,Renter
+from .forms import RenterForm
 
 
 # Create your views here.
@@ -34,20 +35,9 @@ def add_renter(request):
     
     if request.method == "POST":
 
-        building = request.POST.get("building")
-        name = request.POST.get("name")
-        phno = request.POST.get("phno")
-        whatsappp = request.POST.get("whatsappp")
-        advance = request.POST.get("advance")
-        rent = request.POST.get("rent")
-        
-        
-        renter = Renter(name=name,
-            phno=phno,
-            whatsappp=whatsappp,
-            advance=advance,
-            rent=rent)
-        renter.save()
+        form = RenterForm(request.POST)
+        if form.is_valid():
+            form.save()
         
         return redirect("/")
     

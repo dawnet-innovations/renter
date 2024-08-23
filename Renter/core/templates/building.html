@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %} BUILDING {% endblock %} 
+{% block title %} {{ building.name }} {% endblock %} 
 
 {% block body %}
 
@@ -10,7 +10,7 @@
 </a>
     
 
-<h1 class="fw-bold text-center m-3">BUILDING NAME</h1>
+<h1 class="fw-bold text-center m-3"> {{ building.name }} </h1>
 
 
 <div class="container mt-5">
@@ -75,9 +75,14 @@
         <tbody>
           
           <tr>
-            <th>1</th>
+            {% for room in rooms %}
+            <th> {{ room.name }} </th>
             
-            <td><span class="fw-bold">NAME</span>
+            
+            <td><span class="fw-bold"> {renter name} </span>
+              
+          
+                <span class="fw-bold"></span>
               <br>
               
               <p class="text-">PAID : <span class="fw-bold">0000</span> ON <span class="fw-bold">DATE</span></p>
@@ -93,7 +98,7 @@
             </td>
            
           </tr>
-          
+          {% endfor %}
       
         </tbody>
     </table>

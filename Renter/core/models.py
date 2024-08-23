@@ -7,22 +7,21 @@ class Building(models.Model):
     def __str__(self):
         return self.name
 
-
-class Renter(models.Model):
+class Room(models.Model):
     building = models.ForeignKey(Building, on_delete=models.CASCADE, related_name='%(class)s_building')
-    room = models.CharField(max_length=25)
     name = models.CharField(max_length=100)
-    phone = models.CharField(max_length=15)
-    whatsapp = models.CharField(max_length=15, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
+
+class Renter(models.Model):    
+    room = models.ForeignKey(Room, on_delete=models.CASCADE, related_name='%(class)s_room')
+    name = models.CharField(max_length=100)
     agreement_start = models.DateTimeField()
     agreement_end = models.DateTimeField()
-    advance = models.DecimalField(max_digits=10, decimal_places=5)
-    rent = models.DecimalField(max_digits=10, decimal_places=5)
-
-    def save(self, *args, **kwargs):
-        if not self.whatsapp:
-            self.whatsapp = self.phone
-        super().save(*args, **kwargs)
+    advance = models.DecimalField(max_digits=100, decimal_places=5)
+    rent = models.DecimalField(max_digits=100, decimal_places=5)
 
     def __str__(self):
         return self.name

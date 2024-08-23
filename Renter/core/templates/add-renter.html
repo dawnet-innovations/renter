@@ -21,7 +21,7 @@
                 <label for="buildingName" class="form-label">Building </label>
                 <select id="buildingName" name="building" class="form-select">
                     <option value="" disabled selected>Select a building</option>
-                    {% for build in building %}
+                    {% for build in buildings %}
                     <option value="{{ build.id }}"> {{ build.name }} </option>
                     {% endfor %}
                     <!-- Add more options as needed -->
@@ -29,7 +29,13 @@
             </div>
             <div class="mb-3">
                 <label for="buildingName" class="form-label">Room </label>
-                <input name="name" type="text" class="form-control" id="buildingName" placeholder="Enter Name ">
+                <select id="buildingName" name="room" class="form-select">
+                    <option value="" disabled selected>Select a room</option>
+                    {% for room in rooms %}
+                    <option value="{{ room.id }}"> {{ room.name }} </option>
+                    {% endfor %}
+                    <!-- Add more options as needed -->
+                </select>
             </div>
             <div class="mb-3">
                 <label for="buildingName" class="form-label">Name </label>
@@ -49,11 +55,11 @@
             </div>
             <div class="mb-3">
                 <label for="buildingName" class="form-label">agreement start </label>
-                <input name="start" type="date" class="form-control" id="datePicker">
+                <input name="agreement_start" type="date" class="form-control" id="datePicker">
             </div>
             <div class="mb-3">
                 <label for="buildingName" class="form-label">agreement end </label>
-                <input name="end" type="date" class="form-control" id="datePicker">
+                <input name="agreement_end" type="date" class="form-control" id="datePicker">
             </div>
             <div class="mb-3">
                 <label for="buildingName" class="form-label">Rent </label>

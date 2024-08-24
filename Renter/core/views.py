@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Building, Renter, Room
+from .models import Building, Renter, Room, Rent
 from .forms import RenterForm, RoomForm
 
 def add_building(request):
@@ -72,13 +72,11 @@ def building(request, id):
     return render(request, 'building.html', context=context)
 
 def renter(request, id):
-    building = get_object_or_404(Building, id=id)
-    rooms = Room.objects.filter(building=building)
-    renters = Renter.objects.filter(room__in=rooms)
+    renter = Renter.objects.get(id=id)
+    rents = Rent.objects.filter(renter=renter).all()
     context = {
-        "building": building,
-        "rooms": rooms,
-        "renters": renters,
+        "renter": renter,
+        "rent": rents,
     }
     return render(request, 'renter.html', context=context)
 

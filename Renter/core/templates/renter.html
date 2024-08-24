@@ -9,7 +9,7 @@
     <i style="font-size: 1.5rem; color: grey;" class="fa-solid fa-arrow-left mt-3 mx-3"></i>
 </a>
 
-<h1 class="fw-bold text-center m-3">ROOM NO</h1>
+<h1 class="fw-bold text-center m-3"> {{ renter.room }} </h1>
 
 <div class="container mt-5">
 
@@ -21,7 +21,7 @@
           </a>
     </div>
     <div class="col">
-        <a href="fam1.html" class="btn btn-outline-success btn-sm m-2">
+        <a href="https://wa.me/" class="btn btn-outline-success btn-sm m-2">
             WHATSAPP
           </a>
       </div>
@@ -39,30 +39,32 @@
   
   <tr>
   
-    <td>NAME : {{ renters.name }}</span>
+    <td>NAME : </span>
     
     </td>
-    <td></td>
+    <td class="fw-bold">{{ renter.name }}</td>
 
     <td></td>
   </tr>
 
   <tr>
   
-    <td>ADVANCE</span>
+    <td>ADVANCE: </span>
     
     </td>
-    <td></td>
+    <td class="fw-bold">{{ renter.advance }}</td>
 
     <td></td>
   </tr>
 
   <tr>
   
-    <td>AGREEMENT DATE</span>
+    <td>AGREEMENT DATE : </span>
     
     </td>
-    <td></td>
+    <td class="fw-bold">{{ renter.agreement_start }} - {{ renter.agreement_end }}</span>
+    
+    </td>
 
     <td></td>
   </tr>

@@ -18,6 +18,7 @@ class Room(models.Model):
 class Renter(models.Model):    
     room = models.ForeignKey(Room, on_delete=models.CASCADE, related_name='%(class)s_room')
     name = models.CharField(max_length=100)
+ 
     agreement_start = models.DateTimeField()
     agreement_end = models.DateTimeField()
     advance = models.DecimalField(max_digits=100, decimal_places=5)

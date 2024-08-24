@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}  HOME {% endblock %} 
+{% block title %} Home {% endblock %} 
 
 {% block body %}
-
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" href="#">Company</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
@@ -24,7 +24,7 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown link
+            More
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Action</a></li>
@@ -37,88 +37,58 @@
   </div>
 </nav>
 
-<section class="m-">
+<!-- Main Section -->
+<section class="container mt-4">
+  <h1 class="text-center fw-bold mb-4">Company Name</h1>
 
-  <h1 class="fw-bold text-center m-3">COMPANY NAME</h1>
-
-
-<div class="container mt-5">
-    
-<div class="row">
-<div class="col">
-  <a href="add-building">
-    <button type="button" class="btn btn-primary mx-3"> ADD BUILDING</button>
-  </a>
-</div>
-<div class="col">
-    <a href="add-room">
-      <button type="button" class="btn btn-primary mx-3">ADD ROOM</button>
-    </a>
-  </div>
-  <div class="col">
-    <a href="add-renter">
-      <button type="button" class="btn btn-primary mx-3">ADD RENTER</button>
-    </a>
+  <!-- Action Buttons -->
+  <div class="row mb-4">
+    <div class="col-md-4 mb-3">
+      <a href="add-building" class="btn btn-primary w-100">Add Building</a>
+    </div>
+    <div class="col-md-4 mb-3">
+      <a href="add-room" class="btn btn-primary w-100">Add Room</a>
+    </div>
+    <div class="col-md-4 mb-3">
+      <a href="add-renter" class="btn btn-primary w-100">Add Renter</a>
+    </div>
   </div>
 
-</div>
+  <!-- Total Section -->
+  <div class="mb-4">
+    <p class="text-muted" style="font-size: 1.3rem;">Month Total: 0000
+      <a href="#" class="btn btn-outline-danger btn-sm ms-2">View</a>
+    </p>
+  </div>
 
-
-
-<br>
-                
-<p class="text-" style="font-size: 1.3rem">MONTH TOTAL : 0000 <a href="" class="btn btn-outline-danger btn-sm m-2">
-  VIEW
-</a>
-</p>
-
-
-
-<div class="container scroll-animation-text my-5">
+  <!-- Buildings Cards -->
   <div class="row">
     {% for build in buildings %}
     <div class="col-md-6 col-lg-4 mb-4">
-      
-      <a href="{% url 'building' id=build.id %}" class="card" style="text-decoration: none;">
+      <a href="{% url 'building' id=build.id %}" class="card text-decoration-none h-100">
         <div class="card-body text-center">
-          <i class="fa-solid fa-building" style="color: ; font-size: 3rem;"></i><br><br>
-          <h5 class="lead font-italic card-title fw-bold" style="font-size: 1.5rem;"> {{ build.name }} </h5>
-          
-          <p class="lead font-italic card-text fw-bold" style="font-size: 1rem;">PENDING RENTER :</p>
-          <p class="lead font-italic card-text fw-bold" style="font-size: 1rem;">AMOUNT :</p>
-      </div>
-    </a>
-
+          <i class="fa-solid fa-building text-primary" style="font-size: 3rem;"></i>
+          <h5 class="card-title mt-3 mb-2">{{ build.name }}</h5>
+          <p class="card-text mb-1">Pending Renter: <strong>0</strong></p>
+          <p class="card-text">Amount: <strong>$0.00</strong></p>
+        </div>
+      </a>
     </div>
     {% endfor %}
 
+    <!-- Placeholder Card for More Content -->
     <div class="col-md-6 col-lg-4 mb-4">
-     
-      <a href="" class="card" style="text-decoration: none;">
+      <a href="#" class="card text-decoration-none h-100">
         <div class="card-body text-center">
-          <i class="fa-solid fa-building" style="color: ; font-size: 3rem;"></i><br><br>
-          <h5 class="lead font-italic card-title fw-bold" style="font-size: 1.5rem;">BUILDING NAME</h5>
-          <p class="lead font-italic card-text fw-bold" style="font-size: 1rem;">PENDING RENTER :</p>
-          <p class="lead font-italic card-text fw-bold" style="font-size: 1rem;">AMOUNT :</p>
-      </div>
-    </a>
-      
+          <i class="fa-solid fa-building text-secondary" style="font-size: 3rem;"></i>
+          <h5 class="card-title mt-3 mb-2">Building Name</h5>
+          <p class="card-text mb-1">Pending Renter: <strong>0</strong></p>
+          <p class="card-text">Amount: <strong>$0.00</strong></p>
+        </div>
+      </a>
     </div>
-    <div class="col-md-6 col-lg-4 mb-4">
-      
-      <a href="" class="card" style="text-decoration: none;">
-        <div class="card-body text-center">
-          <i class="fa-solid fa-building" style="color: ; font-size: 3rem;"></i><br><br>
-          <h5 class="lead font-italic card-title fw-bold" style="font-size: 1.5rem;">BUILDING NAME</h5>
-          <p class="lead font-italic card-text fw-bold" style="font-size: 1rem;">PENDING RENTER :</p>
-          <p class="lead font-italic card-text fw-bold" style="font-size: 1rem;">AMOUNT :</p>
-      </div>
-      
-    </a>
-    
-    </div>
+    <!-- Add more placeholder cards as needed -->
   </div>
-</div>
+</section>
 
-{% endblock %} 
-
+{% endblock %}

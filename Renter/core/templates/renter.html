@@ -1,132 +1,122 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %} RENTER {% endblock %} 
+{% block title %} RENTER {% endblock %}
 
 {% block body %}
 
-<a href="javascript:window.history.back();">
-    <i style="font-size: 1.5rem; color: grey;" class="fa-solid fa-arrow-left mt-3 mx-3"></i>
-</a>
+    <a href="javascript:window.history.back();">
+        <i style="font-size: 1.5rem; color: grey;" class="fa-solid fa-arrow-left mt-3 mx-3"></i>
+    </a>
 
-<h1 class="fw-bold text-center m-3"> {{ renter.room }} </h1>
+    <h1 class="fw-bold text-center m-3"> {{ renter.room }} </h1>
 
-<div class="container mt-5">
-
-                   
-<div class="row">
-    <div class="col">
-        <a href="fam1.html" class="btn btn-outline-success btn-sm m-2">
-           CALL
-          </a>
-    </div>
-    <div class="col">
-        <a href="https://wa.me/" class="btn btn-outline-success btn-sm m-2">
-            WHATSAPP
-          </a>
-      </div>
-    
-    
-    </div>
-    
-
-<table class="table table- table-borderless">
-<thead class="thead-dark">
-
-</thead>
-<tbody>
-
-  
-  <tr>
-  
-    <td>NAME : </span>
-    
-    </td>
-    <td class="fw-bold">{{ renter.name }}</td>
-
-    <td></td>
-  </tr>
-
-  <tr>
-  
-    <td>ADVANCE: </span>
-    
-    </td>
-    <td class="fw-bold">{{ renter.advance }}</td>
-
-    <td></td>
-  </tr>
-
-  <tr>
-  
-    <td>AGREEMENT DATE : </span>
-    
-    </td>
-    <td class="fw-bold">{{ renter.agreement_start }} - {{ renter.agreement_end }}</span>
-    
-    </td>
-
-    <td></td>
-  </tr>
-  
-  
+    <div class="container mt-5">
 
 
+        <div class="row">
+            <div class="col">
+                <a href="fam1.html" class="btn btn-outline-success btn-sm m-2" target="_blank">
+                    CALL
+                </a>
+            </div>
+            <div class="col">
+                <a href="https://wa.me/{{ renter.whatsapp }}" class="btn btn-outline-success btn-sm m-2"
+                   target="_blank">
+                    WHATSAPP
+                </a>
+            </div>
 
-</tbody>
-</table>
-<br>
+
+        </div>
 
 
-<div class="table-responsive">
+        <table class="table table- table-borderless">
+            <thead class="thead-dark">
 
-  <table class="table table-striped table-borderless">
-    <thead class="thead-dark">
+            </thead>
+            <tbody>
 
-        <th scope="col">
 
-            <h5 class="fw-bold">DATE</h5>
+            <tr>
 
-            </th>
-            <th scope="col">
+                <td>NAME : </span>
 
-                <h5 class="fw-bold">AMOUNT</h5>
+                </td>
+                <td class="fw-bold">{{ renter.name }}</td>
 
+                <td></td>
+            </tr>
+
+            <tr>
+
+                <td>ADVANCE: </span>
+
+                </td>
+                <td class="fw-bold">{{ renter.advance|floatformat:2 }}</td>
+
+                <td></td>
+            </tr>
+
+            <tr>
+
+                <td>AGREEMENT DATE :
+
+                </td>
+                <td class="fw-bold">{{ renter.agreement_start|date:"Y-m-d" }} - {{ renter.agreement_end|date:"Y-m-d" }}
+
+                </td>
+
+                <td></td>
+            </tr>
+
+
+            </tbody>
+        </table>
+        <br>
+
+
+        <div class="table-responsive">
+
+            <table class="table table-striped table-borderless">
+                <thead class="thead-dark">
+
+                <th scope="col">
+                    <h5 class="fw-bold">DATE</h5>
                 </th>
-            <th scope="col">
-
-                <h5 class="fw-bold">VIEW</h5>
-
+                <th scope="col">
+                    <h5 class="fw-bold">AMOUNT</h5>
                 </th>
-            
-      </tr>
-    </thead>
-    <tbody>
-      
-      <tr>
-        <th>00/00/0000</th>
-        
-        <td><span class="fw-bold">0000</span>
-        
-        </td>
+                <th scope="col">
+                    <h5 class="fw-bold">VIEW</h5>
+                </th>
+                </thead>
+                <tbody>
+                {% for rent in rents %}
+                    <tr>
+                        <th>{{ rent.date|date:"Y-m-d" }}</th>
 
-        <td>NIL</td>
-      </tr>
-  
-    </tbody>
-  </table>
+                        <td><span class="fw-bold">{{ rent.amount_paid|floatformat:2 }}</span>
 
-<hr>
-        <p class="text-">TOTAL : 0000</p>    
-        
-        <p class="text-">DUE : 0000</p>
+                        </td>
 
-  </div>
-</div>
-</div>
+                        <td><a href="{% url 'bill' id=rent.id %}">View</a><a href="{% url 'bill_download' id=rent.id %}">Download</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
 
-</div>
-</div>
+            <hr>
+            <p class="text-">TOTAL : {{ total_rent|floatformat:2 }}</p>
+
+            <p class="text-">DUE : {{ due|floatformat:2 }}</p>
+
+        </div>
+    </div>
+    </div>
+
+    </div>
+    </div>
 
 
 {% endblock %} 

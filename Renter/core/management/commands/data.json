@@ -1,0 +1,92 @@
+{
+  "buildings": [
+    {
+      "id": 1,
+      "name": "Sunset Tower"
+    },
+    {
+      "id": 2,
+      "name": "Riverside Complex"
+    }
+  ],
+  "rooms": [
+    {
+      "id": 1,
+      "building": 1,
+      "name": "Room 101"
+    },
+    {
+      "id": 2,
+      "building": 1,
+      "name": "Room 102"
+    },
+    {
+      "id": 3,
+      "building": 2,
+      "name": "Room 201"
+    },
+    {
+      "id": 4,
+      "building": 2,
+      "name": "Room 202"
+    }
+  ],
+  "renters": [
+    {
+      "id": 1,
+      "room": 1,
+      "name": "Alice Johnson",
+      "phone": "+1234567890",
+      "whatsapp": "+0987654321",
+      "agreement_start": "2024-01-01T10:00:00Z",
+      "agreement_end": "2024-12-31T10:00:00Z",
+      "advance": "1000.00000",
+      "rent": "1500.00000"
+    },
+    {
+      "id": 2,
+      "room": 2,
+      "name": "Bob Smith",
+      "phone": "+1234567891",
+      "whatsapp": "+0987654322",
+      "agreement_start": "2024-03-01T10:00:00Z",
+      "agreement_end": "2024-08-31T10:00:00Z",
+      "advance": "500.00000",
+      "rent": "700.00000"
+    },
+    {
+      "id": 3,
+      "room": 3,
+      "name": "Charlie Brown",
+      "phone": "+1234567892",
+      "whatsapp": "+0987654323",
+      "agreement_start": "2024-02-15T10:00:00Z",
+      "agreement_end": "2024-11-15T10:00:00Z",
+      "advance": "1200.00000",
+      "rent": "1600.00000"
+    }
+  ],
+  "rents": [
+    {
+      "id": 1,
+      "renter": 1,
+      "amount_paid": "1500.00000",
+      "balance": "0.00000",
+      "date": "2024-01-01T10:00:00Z"
+    },
+    {
+      "id": 2,
+      "renter": 2,
+      "amount_paid": "700.00000",
+      "balance": "0.00000",
+      "date": "2024-03-01T10:00:00Z"
+    },
+    {
+      "id": 3,
+      "renter": 3,
+      "amount_paid": "800.00000",
+      "balance": "800.00000",
+      "date": "2024-02-15T10:00:00Z"
+    }
+  ]
+}

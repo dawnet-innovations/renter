@@ -100,7 +100,18 @@
 
                         </td>
 
-                        <td><a href="{% url 'bill' id=rent.id %}">View</a><a href="{% url 'bill_download' id=rent.id %}">Download</a></td>
+                        <td>
+                            <div class="input-group mb-3" style="max-width: 200px;">
+                                <a href="{% url 'bill' id=rent.id %}" class="btn btn-outline-primary btn-sm m-2">
+                                    View
+                                </a>
+                            </div>
+                            <div class="input-group mb-3" style="max-width: 200px; display: ">
+                                <a href="{% url 'bill_download' id=rent.id %}" class="btn btn-outline-primary btn-sm m-2">
+                                    Download
+                                </a>
+                            </div>
+                        </td>
                     </tr>
                 {% endfor %}
                 </tbody>

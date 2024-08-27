@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = 'users.User'
 
 # Application definition
 
@@ -38,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core'
+    'core',
+    'users'
 ]
 
 MIDDLEWARE = [
@@ -125,3 +127,15 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 WKHTMLTOX_PATH = join(BASE_DIR, "Renter", "wkhtmltox", "bin", "wkhtmltopdf.exe")
+
+LOGIN_URL = "users:login"
+LOGIN_REDIRECT_URL = "users:redirect-user"
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = '<EMAIL_ID>' # gmail id for sending emails
+EMAIL_HOST_PASSWORD = '<APP_PASSWORD>' # app password provided by the google
+EMAIL_USE_TLS = True
+
+OTP_LENGTH = 6

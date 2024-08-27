@@ -5,8 +5,9 @@ from django.conf import settings
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import render_to_string
+from django.urls import reverse_lazy
 
-from .forms import RenterForm, RoomForm
+from .forms import RenterForm, RoomForm, RentForm
 from .models import Building, Renter, Room, Rent
 
 
@@ -43,6 +44,7 @@ def index(request):
     if request.method == "GET":
         context = {
             "buildings": buildings,
+            "renters": Renter.objects.all(),
             "total": total,
             "pending_count": pending_count,
             "monthly_total": monthly_total,
@@ -127,6 +129,24 @@ def renter(request, id):
         "due": due
     }
     return render(request, 'renter.html', context=context)
+
+
+def rent_pay(request, id):
+    renter = Renter.objects.get(id=id)
+    if request.method == "GET":
+        return render(request, "rent.html")
+
+    if request.method == "POST":
+        form = RentForm(request.POST)
+        form.renter = renter
+        amount_paid = form.cleaned_data["amount_paid"]
+        if amount_paid != renter.rent:
+            form.balance = renter.rent - amount_paid
+
+        print(form.errors)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse_lazy("renter", kwargs={"id": id}))
 
 
 def generate_bill(html_content):

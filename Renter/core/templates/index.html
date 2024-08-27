@@ -57,7 +57,7 @@
   <!-- Total Section -->
   <div class="mb-4">
     <p class="text-muted" style="font-size: 1.3rem;">Month Total: {{ total|floatformat:2 }}
-      <a href="#" class="btn btn-outline-danger btn-sm ms-2">View</a>
+{#      <a href="#" class="btn btn-outline-danger btn-sm ms-2">View</a>#}
     </p>
   </div>
 
@@ -100,4 +100,61 @@
   </div>
 </section>
 
+<div class="table-responsive">
+    <div class="container mt-auto">
+        <div class="row mb-3">
+            <div class="col-md-6 offset-md-3">
+                <input type="text" name="search" id="search" class="form-control" placeholder="Search..." />
+            </div>
+        </div>
+
+        <table class="table table-striped table-borderless">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">
+                        <h4 class="fw-bold">ROOM NO</h4>
+                    </th>
+                    <th class="text-" scope="col" colspan="2">
+                        <h4 class="fw-bold">RENTER</h4>
+                    </th>
+                    <th class="text-" scope="col" colspan="2">
+                        <h4 class="fw-bold"></h4>
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                {% for renter in renters %}
+                <tr>
+                    <th>{{ renter.room }}</th>
+                    <td>
+                        <span class="fw-bold">{{ renter.name }}</span>
+                    </td>
+                    <td>
+                        <div class="input-group mb-3" style="max-width: 200px;">
+                            <a href="{% url 'renter' id=renter.id %}" class="btn btn-outline-primary btn-sm m-2">
+                                VIEW DETAILS
+                            </a>
+                        </div>
+                        <div class="input-group mb-3" style="max-width: 200px;">
+                            <a href="{% url 'pay-rent' id=renter.id %}" class="btn btn-outline-primary btn-sm m-2">
+                                PAY
+                            </a>
+                        </div>
+                        
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" class="text-center">No renters found</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <hr>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+	<script src="{% static 'js/search.js' %}"></script>
 {% endblock %}

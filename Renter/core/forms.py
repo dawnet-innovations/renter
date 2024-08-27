@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 
-from .models import Renter,Room
+from .models import Renter, Room, Rent
 
 
 class RenterForm(ModelForm):
@@ -15,3 +15,10 @@ class RoomForm(ModelForm):
     class Meta:
         model = Room
         fields = "__all__"
+
+
+class RentForm(ModelForm):
+    class Meta:
+        model = Rent
+        fields = "__all__"
+

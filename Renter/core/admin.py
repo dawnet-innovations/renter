@@ -1,3 +1,7 @@
 from django.contrib import admin
+from . import models
 
-# Register your models here.
+admin.site.register(models.Building)
+admin.site.register(models.Renter)
+admin.site.register(models.Room)
+admin.site.register(models.Rent)

@@ -1,92 +1,138 @@
 {
-  "buildings": [
-    {
-      "id": 1,
-      "name": "Sunset Tower"
-    },
-    {
-      "id": 2,
-      "name": "Riverside Complex"
-    }
-  ],
-  "rooms": [
-    {
-      "id": 1,
-      "building": 1,
-      "name": "Room 101"
-    },
-    {
-      "id": 2,
-      "building": 1,
-      "name": "Room 102"
-    },
-    {
-      "id": 3,
-      "building": 2,
-      "name": "Room 201"
-    },
-    {
-      "id": 4,
-      "building": 2,
-      "name": "Room 202"
-    }
-  ],
-  "renters": [
-    {
-      "id": 1,
-      "room": 1,
-      "name": "Alice Johnson",
-      "phone": "+1234567890",
-      "whatsapp": "+0987654321",
-      "agreement_start": "2024-01-01T10:00:00Z",
-      "agreement_end": "2024-12-31T10:00:00Z",
-      "advance": "1000.00000",
-      "rent": "1500.00000"
-    },
-    {
-      "id": 2,
-      "room": 2,
-      "name": "Bob Smith",
-      "phone": "+1234567891",
-      "whatsapp": "+0987654322",
-      "agreement_start": "2024-03-01T10:00:00Z",
-      "agreement_end": "2024-08-31T10:00:00Z",
-      "advance": "500.00000",
-      "rent": "700.00000"
-    },
-    {
-      "id": 3,
-      "room": 3,
-      "name": "Charlie Brown",
-      "phone": "+1234567892",
-      "whatsapp": "+0987654323",
-      "agreement_start": "2024-02-15T10:00:00Z",
-      "agreement_end": "2024-11-15T10:00:00Z",
-      "advance": "1200.00000",
-      "rent": "1600.00000"
-    }
-  ],
-  "rents": [
-    {
-      "id": 1,
-      "renter": 1,
-      "amount_paid": "1500.00000",
-      "balance": "0.00000",
-      "date": "2024-01-01T10:00:00Z"
-    },
-    {
-      "id": 2,
-      "renter": 2,
-      "amount_paid": "700.00000",
-      "balance": "0.00000",
-      "date": "2024-03-01T10:00:00Z"
-    },
-    {
-      "id": 3,
-      "renter": 3,
-      "amount_paid": "800.00000",
-      "balance": "800.00000",
-      "date": "2024-02-15T10:00:00Z"
-    }
-  ]
+    "buildings": [
+        {
+            "id": 1,
+            "name": "Sunrise Apartments"
+        },
+        {
+            "id": 2,
+            "name": "Green Valley Estate"
+        },
+        {
+            "id": 3,
+            "name": "Riverfront Towers"
+        },
+        {
+            "id": 4,
+            "name": "Lakeside Residences"
+        }
+    ],
+    "rooms": [
+        {
+            "id": 1,
+            "building": 1,
+            "name": "101"
+        },
+        {
+            "id": 2,
+            "building": 1,
+            "name": "102"
+        },
+        {
+            "id": 3,
+            "building": 2,
+            "name": "201"
+        },
+        {
+            "id": 4,
+            "building": 2,
+            "name": "202"
+        },
+        {
+            "id": 5,
+            "building": 2,
+            "name": "203"
+        },
+        {
+            "id": 6,
+            "building": 3,
+            "name": "301"
+        },
+        {
+            "id": 7,
+            "building": 3,
+            "name": "302"
+        },
+        {
+            "id": 8,
+            "building": 4,
+            "name": "401"
+        }
+    ],
+    "renters": [
+        {
+            "id": 1,
+            "room": 1,
+            "name": "John Doe",
+            "phone": "123-456-7890",
+            "whatsapp": "123-456-7890",
+            "agreement_start": "2023-01-01T00:00:00Z",
+            "agreement_end": "2024-01-01T00:00:00Z",
+            "advance": "500.00",
+            "rent": "1500.00"
+        },
+        {
+            "id": 2,
+            "room": 3,
+            "name": "Jane Smith",
+            "phone": "234-567-8901",
+            "whatsapp": "234-567-8901",
+            "agreement_start": "2023-02-01T00:00:00Z",
+            "agreement_end": "2024-02-01T00:00:00Z",
+            "advance": "600.00",
+            "rent": "1600.00"
+        },
+        {
+            "id": 3,
+            "room": 5,
+            "name": "Alice Johnson",
+            "phone": "345-678-9012",
+            "whatsapp": "345-678-9012",
+            "agreement_start": "2023-03-01T00:00:00Z",
+            "agreement_end": "2024-03-01T00:00:00Z",
+            "advance": "550.00",
+            "rent": "1550.00"
+        },
+        {
+            "id": 4,
+            "room": 6,
+            "name": "Bob Brown",
+            "phone": "456-789-0123",
+            "whatsapp": "456-789-0123",
+            "agreement_start": "2023-04-01T00:00:00Z",
+            "agreement_end": "2024-04-01T00:00:00Z",
+            "advance": "700.00",
+            "rent": "1700.00"
+        }
+    ],
+    "rents": [
+        {
+            "id": 1,
+            "renter": 1,
+            "amount_paid": "1500.00",
+            "balance": "0.00",
+            "date": "2023-01-01T00:00:00Z"
+        },
+        {
+            "id": 2,
+            "renter": 2,
+            "amount_paid": "1600.00",
+            "balance": "0.00",
+            "date": "2023-02-01T00:00:00Z"
+        },
+        {
+            "id": 3,
+            "renter": 3,
+            "amount_paid": "1550.00",
+            "balance": "0.00",
+            "date": "2023-03-01T00:00:00Z"
+        },
+        {
+            "id": 4,
+            "renter": 4,
+            "amount_paid": "1700.00",
+            "balance": "0.00",
+            "date": "2023-04-01T00:00:00Z"
+        }
+    ]
 }

@@ -7,7 +7,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Company</a>
+    <a class="navbar-brand" href="#">Abdul Nazar K.P</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -17,20 +17,13 @@
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
+          <a class="nav-link" href="{% url 'add-building' %}">Add Building</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
+          <a class="nav-link" href="{% url 'add-room' %}">Add Room</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            More
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'add-renter' %}">Add Renter</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'users:logout' %}">Logout</a>
@@ -42,21 +35,7 @@
 
 <!-- Main Section -->
 <section class="container mt-4">
-  <h1 class="text-center fw-bold mb-4">Company Name</h1>
-
-  <!-- Action Buttons -->
-  <div class="row mb-4">
-    <div class="col-md-4 mb-3">
-      <a href="add-building" class="btn btn-primary w-100">Add Building</a>
-    </div>
-    <div class="col-md-4 mb-3">
-      <a href="add-room" class="btn btn-primary w-100">Add Room</a>
-    </div>
-    <div class="col-md-4 mb-3">
-      <a href="add-renter" class="btn btn-primary w-100">Add Renter</a>
-    </div>
-  </div>
-
+  <h1 class="text-center fw-bold mb-4">Abdul Nazar K.P</h1>
   <!-- Total Section -->
   <div class="mb-4">
     <p class="text-muted" style="font-size: 1.3rem;">Month Total: {{ total|floatformat:2 }}
@@ -87,19 +66,6 @@
       </a>
     </div>
     {% endfor %}
-
-    <!-- Placeholder Card for More Content -->
-    <div class="col-md-6 col-lg-4 mb-4">
-      <a href="#" class="card text-decoration-none h-100">
-        <div class="card-body text-center">
-          <i class="fa-solid fa-building text-secondary" style="font-size: 3rem;"></i>
-          <h5 class="card-title mt-3 mb-2">Building Name</h5>
-          <p class="card-text mb-1">Pending Renter: <strong>0</strong></p>
-          <p class="card-text">Amount: <strong>$0.00</strong></p>
-        </div>
-      </a>
-    </div>
-    <!-- Add more placeholder cards as needed -->
   </div>
 </section>
 

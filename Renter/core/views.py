@@ -27,7 +27,7 @@ def index(request):
     buildings = Building.objects.all()
 
     now = datetime.now()
-    month_rents = Rent.objects.filter(date__month=now.month)
+    month_rents = Rent.objects.filter(date__month=now.month, date__year=now.year)
     total = 0
     for rent in month_rents:
         total += rent.amount_paid
@@ -43,8 +43,8 @@ def index(request):
 
     if request.method == "GET":
         context = {
-            "buildings": buildings,
-            "renters": Renter.objects.all(),
+            "buildings": buildings.order_by("-id"),
+            "renters": Renter.objects.all().order_by("-id"),
             "total": total,
             "pending_count": pending_count,
             "monthly_total": monthly_total,
@@ -66,8 +66,7 @@ def add_room(request):
             return redirect("/")
         else:
             context = {
-                "buildings": Building.objects.all(),
-                "form": form
+                "buildings": Building.objects.all().order_by("-id"),
             }
             return render(request, "add-room.html", context=context)
 
@@ -75,8 +74,8 @@ def add_room(request):
 def add_renter(request):
     if request.method == "GET":
         context = {
-            "buildings": Building.objects.all(),
-            "rooms": Room.objects.all(),
+            "buildings": Building.objects.all().order_by("-id"),
+            "rooms": Room.objects.all().order_by("-id"),
         }
         return render(request, "add-renter.html", context=context)
 
@@ -87,9 +86,8 @@ def add_renter(request):
             return redirect("/")
         else:
             context = {
-                "buildings": Building.objects.all(),
-                "rooms": Room.objects.all(),
-                "form": form
+                "buildings": Building.objects.all().order_by("-id"),
+                "rooms": Room.objects.all().order_by("-id"),
             }
             return render(request, "add-renter.html", context=context)
 
@@ -106,8 +104,8 @@ def building(request, id):
             total += rent.amount_paid
     context = {
         "building": building,
-        "rooms": rooms,
-        "renters": renters,
+        "rooms": rooms.order_by("-id"),
+        "renters": renters.order_by("-id"),
         "total": total
     }
     return render(request, 'building.html', context=context)
@@ -124,7 +122,7 @@ def renter(request, id):
         due += rent.balance
     context = {
         "renter": renter,
-        "rents": rents,
+        "rents": rents.order_by("-id"),
         "total_rent": total_rent,
         "due": due
     }
@@ -138,19 +136,18 @@ def rent_pay(request, id):
 
     if request.method == "POST":
         form = RentForm(request.POST)
-        form.renter = renter
-        amount_paid = form.cleaned_data["amount_paid"]
-        if amount_paid != renter.rent:
-            form.balance = renter.rent - amount_paid
+        form.instance.renter = renter
 
         print(form.errors)
         if form.is_valid():
+            amount_paid = form.cleaned_data["amount_paid"]
+            if amount_paid != renter.rent:
+                form.balance = renter.rent - amount_paid
             form.save()
             return redirect(reverse_lazy("renter", kwargs={"id": id}))
 
 
 def generate_bill(html_content):
-    print(settings.BASE_DIR)
     config = pdfkit.configuration(wkhtmltopdf=settings.WKHTMLTOX_PATH)
     options = {
         'page-size': 'A4',  # Page size options: 'A4', 'Letter', etc.
@@ -186,7 +183,8 @@ def pending(request, id):
     pending = []
     for rent in rents:
         if not rent.is_paid():
-            if not Rent.objects.filter(renter=rent.renter, date__month=rent.date.month, balance=0).exists():
+            if not Rent.objects.filter(renter=rent.renter, date__month=rent.date.month, date__year=rent.date.year,
+                                       balance=0).exists():
                 if rent.renter.room.building.id == building.id:
                     pending.append(rent)
 
@@ -194,3 +192,25 @@ def pending(request, id):
         "renters": [rent.renter for rent in pending],
     }
     return render(request, 'pending.html', context=context)
+
+
+def renter_pendings(request, id):
+    now = datetime.now()
+    renter = Renter.objects.get(id=id)
+    rents = Rent.objects.filter(renter=renter).all()
+    last_rent = Rent.objects.filter(renter=renter).last()
+    diff = last_rent.date.month - now.month
+
+    pending_rents = []
+    for rent in rents:
+        if not rent.is_paid():
+            if not Rent.objects.filter(renter=rent.renter, date__month=rent.date.month, date__year=rent.date.year,
+                                       balance=0).exists():
+                pending_rents.append(rent)
+
+    if diff > 0:
+        pending_months = [now.replace(day=1) - datetime(day=last_rent.date.day, month=last_rent.date.month + i,
+                                                        year=last_rent.date.year) for i in range(1, diff)]
+        pending_rents = [*pending_rents, *[{month: renter.rent} for month in pending_months]]
+
+    return render(request, 'renter_pending.html', {"rents": pending_rents})

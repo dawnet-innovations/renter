@@ -49,6 +49,10 @@
             align-items: center;
             justify-content: center;
         }
+        .signature {
+            text-align: left;
+            margin-right: auto;
+        }
     </style>
 </head>
 <body>
@@ -60,21 +64,21 @@
         </div>
         <div class="content">
             <div class="line">
-                Receipt No. <span style="color: red;">81</span> &emsp; Date: __________
+                Receipt No. <span style="color: red;">{{ rent.id }}</span> &emsp; Date: {{ rent.date|date:'d-m-Y' }}
             </div>
             <div class="line">
-                Received with thanks from Mr./Mrs./M/s _________________
+                Received with thanks from Mr./Mrs./M/s {{ rent.renter.name }}
             </div>
             <div class="line">
-                the sum of rupees _____________________
+                the sum of rupees {{ rent.amount_paid|floatformat:2 }}
             </div>
             <div class="line">
-                towards licence fees / Rent for the Room No. _____ for the month ______
+                towards licence fees / Rent for the Room No. {{ rent.renter.room.name }} for the month {{ rent.date|date:'m' }}
             </div>
         </div>
         <div class="footer">
-            <div class="amount">₹</div>
-            <div>Signature</div>
+            <div class="amount">₹ {{ rent.amount_paid|floatformat:2 }}</div>
+            <div class="signature">Signature</div>
         </div>
     </div>
 </body>

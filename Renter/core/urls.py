@@ -5,10 +5,11 @@ from . import views
 
 urlpatterns = [
 
-    path('', views.index, name='index'),
+    path('', login_required(views.index), name='index'),
     path("building/<id>", login_required(views.building), name="building"),
     path('renter/<id>', login_required(views.renter), name='renter'),
     path('pending/<int:id>', login_required(views.pending), name='pending'),
+    path('renter/pending/<int:id>', login_required(views.renter_pendings), name='renter_pending'),
     path('add-building', login_required(views.add_building), name='add-building'),
     path('add-room', login_required(views.add_room), name='add-room'),
     path('add-renter', login_required(views.add_renter), name='add-renter'),

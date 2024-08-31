@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} RENTER {% endblock %} 
+
+{% block body %}
+
+<a href="javascript:window.history.back();">
+    <i style="font-size: 1.5rem; color: grey;" class="fa-solid fa-arrow-left mt-3 mx-3"></i>
+</a>
+
+<h1 class="fw-bold text-center m-3">PAY</h1>
+
+
+
+<div class="container mt-5">
+    <div class="form-container">
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="amount_paid" class="form-label">Amount</label>
+                <input type="text" class="form-control" name="amount_paid" id="buildingName" placeholder="Enter Amount">
+            </div>
+            <button type="submit" class="btn btn-primary w-100">ADD</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %} 

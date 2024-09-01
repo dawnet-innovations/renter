@@ -1,450 +1,648 @@
 {
-    "Building": [
-        {
-            "id": 1,
-            "name": "Abdul Nazar K.P. Egaranna Paramba"
-        },
-        {
-            "id": 2,
-            "name": "Bushra Appartment, Tanakkar Nagar"
-        },
-        {
-            "id": 3,
-            "name": "Yamuna Arcade, Palayam"
-        },
-        {
-            "id": 4,
-            "name": "Buslhan Appartment"
-        }
-    ],
-    "Room": [
-        {
-            "id": 1,
-            "building": 1,
-            "name": "59/891"
-        },
-        {
-            "id": 2,
-            "building": 1,
-            "name": "59/892"
-        },
-        {
-            "id": 3,
-            "building": 1,
-            "name": "59/893"
-        },
-        {
-            "id": 4,
-            "building": 1,
-            "name": "59/894"
-        },
-        {
-            "id": 5,
-            "building": 1,
-            "name": "59/895"
-        },
-        {
-            "id": 6,
-            "building": 1,
-            "name": "59/896"
-        },
-        {
-            "id": 7,
-            "building": 1,
-            "name": "59/897"
-        },
-        {
-            "id": 8,
-            "building": 1,
-            "name": "59/898"
-        },
-        {
-            "id": 9,
-            "building": 1,
-            "name": "59/899"
-        },
-        {
-            "id": 10,
-            "building": 1,
-            "name": "59/900"
-        },
-        {
-            "id": 11,
-            "building": 1,
-            "name": "59/901"
-        },
-        {
-            "id": 12,
-            "building": 1,
-            "name": "59/887"
-        },
-        {
-            "id": 13,
-            "building": 1,
-            "name": "59/888"
-        },
-        {
-            "id": 14,
-            "building": 1,
-            "name": "59/889"
-        },
-        {
-            "id": 15,
-            "building": 1,
-            "name": "59/890"
-        },
-        {
-            "id": 16,
-            "building": 1,
-            "name": "59/886"
-        },
-        {
-            "id": 17,
-            "building": 2,
-            "name": "64/2065"
-        },
-        {
-            "id": 18,
-            "building": 2,
-            "name": "64/2068"
-        },
-        {
-            "id": 19,
-            "building": 2,
-            "name": "64/2071"
-        },
-        {
-            "id": 20,
-            "building": 2,
-            "name": "64/2072"
-        },
-        {
-            "id": 21,
-            "building": 2,
-            "name": "64/2064"
-        },
-        {
-            "id": 22,
-            "building": 2,
-            "name": "64/2069"
-        },
-        {
-            "id": 23,
-            "building": 2,
-            "name": "64/2073"
-        },
-        {
-            "id": 24,
-            "building": 2,
-            "name": "64/2066"
-        },
-        {
-            "id": 25,
-            "building": 2,
-            "name": "64/2067"
-        },
-        {
-            "id": 26,
-            "building": 2,
-            "name": "64/2070"
-        },
-        {
-            "id": 27,
-            "building": 3,
-            "name": "59/1176"
-        },
-        {
-            "id": 28,
-            "building": 3,
-            "name": "59/1306"
-        },
-        {
-            "id": 29,
-            "building": 3,
-            "name": "59/1308"
-        },
-        {
-            "id": 30,
-            "building": 3,
-            "name": "59/1307"
-        },
-        {
-            "id": 31,
-            "building": 3,
-            "name": "59/1172"
-        },
-        {
-            "id": 32,
-            "building": 4,
-            "name": "37/1087"
-        },
-        {
-            "id": 33,
-            "building": 4,
-            "name": "37/1088"
-        },
-        {
-            "id": 34,
-            "building": 4,
-            "name": "37/1089"
-        },
-        {
-            "id": 35,
-            "building": 4,
-            "name": "37/1090"
-        },
-        {
-            "id": 36,
-            "building": 4,
-            "name": "37/1091"
-        },
-        {
-            "id": 37,
-            "building": 4,
-            "name": "37/1092"
-        },
-        {
-            "id": 38,
-            "building": 4,
-            "name": "37/1093"
-        },
-        {
-            "id": 39,
-            "building": 4,
-            "name": "37/1094"
-        }
-    ],
-    "Renter": [
-        {
-            "id": 1,
-            "room": 1,
-            "name": "Shajee",
-            "phone": null,
-            "whatsapp": null,
-            "agreement_start": null,
-            "agreement_end": null,
-            "advance": 1500.00,
-            "rent": 1750.00
-        },
-        {
-            "id": 2,
-            "room": 2,
-            "name": "Mustafa",
-            "phone": null,
-            "whatsapp": null,
-            "agreement_start": null,
-            "agreement_end": null,
-            "advance": 50000.00,
-            "rent": 2645.00
-        },
-        {
-            "id": 3,
-            "room": 3,
-            "name": "Gopi",
-            "phone": null,
-            "whatsapp": null,
-            "agreement_start": null,
-            "agreement_end": null,
-            "advance": 1200.00,
-            "rent": 1410.00
-        },
-        {
-            "id": 4,
-            "room": 4,
-            "name": "kasim",
-            "phone": null,
-            "whatsapp": null,
-            "agreement_start": null,
-            "agreement_end": null,
-            "advance": 30000.00,
-            "rent": 1725.00
-        },
-        {
-            "id": 5,
-            "room": 5,
-            "name": "Suhaib",
-            "phone": null,
-            "whatsapp": null,
-            "agreement_start": null,
-            "agreement_end": null,
-            "advance": 40000.00,
-            "rent": 2000.00
-        },
-        {
-            "id": 6,
-            "room": 6,
-            "name": "Bijesh",
-            "phone": null,
-            "whatsapp": null,
-            "agreement_start": null,
-            "agreement_end": null,
-            "advance": 35000.00,
-            "rent": 1520.00
-        },
-        {
-            "id": 7,
-            "room": 7,
-            "name": "Viswanathan",
-            "phone": null,
-            "whatsapp": null,
-            "agreement_start": null,
-            "agreement_end": null,
-            "advance": 30000.00,
-            "rent": 2375.00
-        },
-        {
-            "id": 8,
-            "room": 8,
-            "name": "Suresh",
-            "phone": null,
-            "whatsapp": null,
-            "agreement_start": null,
-            "agreement_end": null,
-            "advance": 1800.00,
-            "rent": 2375.00
-        },
-        {
-            "id": 9,
-            "room": 9,
-            "name": "Chandran",
-            "phone": null,
-            "whatsapp": null,
-            "agreement_start": null,
-            "agreement_end": null,
-            "advance": 0.00,
-            "rent": 1415.00
-        },
-        {
-            "id": 10,
-            "room": 10,
-            "name": "Praveesh",
-            "phone": null,
-            "whatsapp": null,
-            "agreement_start": null,
-            "agreement_end": null,
-            "advance": 1050.00,
-            "rent": 1455.00
-        },
-        {
-            "id": 11,
-            "room": 11,
-            "name": "Unnikrishnan",
-            "phone": null,
-            "whatsapp": null,
-            "agreement_start": null,
-            "agreement_end": null,
-            "advance": 900.00,
-            "rent": 1060.00
-        },
-        {
-            "id": 12,
-            "room": 12,
-            "name": "Murugan",
-            "phone": null,
-            "whatsapp": null,
-            "agreement_start": null,
-            "agreement_end": null,
-            "advance": 50000.00,
-            "rent": 1840.00
-        },
-        {
-            "id": 13,
-            "room": 13,
-            "name": "Lalu",
-            "phone": null,
-            "whatsapp": null,
-            "agreement_start": null,
-            "agreement_end": null,
-            "advance": 50000.00,
-            "rent": 2000.00
-        },
-        {
-            "id": 14,
-            "room": 14,
-            "name": "Pramod",
-            "phone": null,
-            "whatsapp": null,
-            "agreement_start": null,
-            "agreement_end": null,
-            "advance": 30000.00,
-            "rent": 1725.00
-        },
-        {
-            "id": 15,
-            "room": 15,
-            "name": "Dullal",
-            "phone": null,
-            "whatsapp": null,
-            "agreement_start": null,
-            "agreement_end": null,
-            "advance": 60000.00,
-            "rent": 2000.00
-        },
-        {
-            "id": 16,
-            "room": 16,
-            "name": "Najeeb",
-            "phone": null,
-            "whatsapp": null,
-            "agreement_start": null,
-            "agreement_end": null,
-            "advance": 125000.00,
-            "rent": 6000.00
-        },
-        {
-            "id": 18,
-            "room": 17,
-            "name": "Shagufta Nazar Kadiri",
-            "phone": null,
-            "whatsapp": null,
-            "agreement_start": null,
-            "agreement_end": null,
-            "advance": 75000.00,
-            "rent": 8000.00
-        },
-        {
-            "id": 19,
-            "room": 18,
-            "name": "Bijesh K",
-            "phone": null,
-            "whatsapp": null,
-            "agreement_start": null,
-            "agreement_end": null,
-            "advance": 65000.00,
-            "rent": 7000.00
-        },
-        {
-            "id": 20,
-            "room": 19,
-            "name": "Nazeem Khan",
-            "phone": null,
-            "whatsapp": null,
-            "agreement_start": null,
-            "agreement_end": null,
-            "advance": 50000.00,
-            "rent": 6000.00
-        },
-        {
-            "id": 21,
-            "room": 20,
-            "name": "Keerthy Raj",
-            "phone": null,
-            "whatsapp": null,
-            "agreement_start": null,
-            "agreement_end": null,
-            "advance": 75000.00,
-            "rent": 7000.00
-        },
-        {
-            "id": 22,
-            "room": 21,
-            "name": "Bushra Nasir, Shailesh Kumar",
-            "phone": null,
-            "whatsapp": null,
-            "agreement_start": null,
-            "agreement_end": null,
-            "advance": 150000.00,
-            "rent": 20000.00
-        }
-    ]
+  "buildings": [
+    {
+      "id": 1,
+      "name": "Abdul Nazar K.P. Egaranna Paramba"
+    },
+    {
+      "id": 2,
+      "name": "Bushra Appartment, Tanakkar Nagar"
+    },
+    {
+      "id": 3,
+      "name": "Yamuna Arcade, Palayam"
+    },
+    {
+      "id": 4,
+      "name": "Buslhan Appartment"
+    }
+  ],
+  "rooms": [
+    {
+      "id": 1,
+      "building": 1,
+      "name": "59/891"
+    },
+    {
+      "id": 2,
+      "building": 1,
+      "name": "59/892"
+    },
+    {
+      "id": 3,
+      "building": 1,
+      "name": "59/893"
+    },
+    {
+      "id": 4,
+      "building": 1,
+      "name": "59/894"
+    },
+    {
+      "id": 5,
+      "building": 1,
+      "name": "59/895"
+    },
+    {
+      "id": 6,
+      "building": 1,
+      "name": "59/896"
+    },
+    {
+      "id": 7,
+      "building": 1,
+      "name": "59/897"
+    },
+    {
+      "id": 8,
+      "building": 1,
+      "name": "59/898"
+    },
+    {
+      "id": 9,
+      "building": 1,
+      "name": "59/899"
+    },
+    {
+      "id": 10,
+      "building": 1,
+      "name": "59/900"
+    },
+    {
+      "id": 11,
+      "building": 1,
+      "name": "59/901"
+    },
+    {
+      "id": 12,
+      "building": 1,
+      "name": "59/887"
+    },
+    {
+      "id": 13,
+      "building": 1,
+      "name": "59/888"
+    },
+    {
+      "id": 14,
+      "building": 1,
+      "name": "59/889"
+    },
+    {
+      "id": 15,
+      "building": 1,
+      "name": "59/890"
+    },
+    {
+      "id": 16,
+      "building": 1,
+      "name": "59/886"
+    },
+    {
+      "id": 17,
+      "building": 2,
+      "name": "64/2065"
+    },
+    {
+      "id": 18,
+      "building": 2,
+      "name": "64/2068"
+    },
+    {
+      "id": 19,
+      "building": 2,
+      "name": "64/2071"
+    },
+    {
+      "id": 20,
+      "building": 2,
+      "name": "64/2072"
+    },
+    {
+      "id": 21,
+      "building": 2,
+      "name": "64/2064"
+    },
+    {
+      "id": 22,
+      "building": 2,
+      "name": "64/2069"
+    },
+    {
+      "id": 23,
+      "building": 2,
+      "name": "64/2073"
+    },
+    {
+      "id": 24,
+      "building": 2,
+      "name": "64/2066"
+    },
+    {
+      "id": 25,
+      "building": 2,
+      "name": "64/2067"
+    },
+    {
+      "id": 26,
+      "building": 2,
+      "name": "64/2070"
+    },
+    {
+      "id": 27,
+      "building": 3,
+      "name": "59/1176"
+    },
+    {
+      "id": 28,
+      "building": 3,
+      "name": "59/1306"
+    },
+    {
+      "id": 29,
+      "building": 3,
+      "name": "59/1308"
+    },
+    {
+      "id": 30,
+      "building": 3,
+      "name": "59/1307"
+    },
+    {
+      "id": 31,
+      "building": 3,
+      "name": "59/1172"
+    },
+    {
+      "id": 32,
+      "building": 4,
+      "name": "37/1087"
+    },
+    {
+      "id": 33,
+      "building": 4,
+      "name": "37/1088"
+    },
+    {
+      "id": 34,
+      "building": 4,
+      "name": "37/1089"
+    },
+    {
+      "id": 35,
+      "building": 4,
+      "name": "37/1090"
+    },
+    {
+      "id": 36,
+      "building": 4,
+      "name": "37/1091"
+    },
+    {
+      "id": 37,
+      "building": 4,
+      "name": "37/1092"
+    },
+    {
+      "id": 38,
+      "building": 4,
+      "name": "37/1093"
+    },
+    {
+      "id": 39,
+      "building": 4,
+      "name": "37/1094"
+    }
+  ],
+  "renters": [
+    {
+      "id": 1,
+      "room": 1,
+      "name": "Shajee",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 1500.00,
+      "rent": 1750.00
+    },
+    {
+      "id": 2,
+      "room": 2,
+      "name": "Mustafa",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 50000.00,
+      "rent": 2645.00
+    },
+    {
+      "id": 3,
+      "room": 3,
+      "name": "Gopi",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 1200.00,
+      "rent": 1410.00
+    },
+    {
+      "id": 4,
+      "room": 4,
+      "name": "kasim",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 30000.00,
+      "rent": 1725.00
+    },
+    {
+      "id": 5,
+      "room": 5,
+      "name": "Suhaib",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 40000.00,
+      "rent": 2000.00
+    },
+    {
+      "id": 6,
+      "room": 6,
+      "name": "Bijesh",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 35000.00,
+      "rent": 1520.00
+    },
+    {
+      "id": 7,
+      "room": 7,
+      "name": "Viswanathan",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 30000.00,
+      "rent": 2375.00
+    },
+    {
+      "id": 8,
+      "room": 8,
+      "name": "Suresh",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 1800.00,
+      "rent": 2375.00
+    },
+    {
+      "id": 9,
+      "room": 9,
+      "name": "Chandran",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 0.00,
+      "rent": 1415.00
+    },
+    {
+      "id": 10,
+      "room": 10,
+      "name": "Praveesh (Ganesh)",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 1050.00,
+      "rent": 1455.00
+    },
+    {
+      "id": 11,
+      "room": 11,
+      "name": "Unnikrishnan",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 900.00,
+      "rent": 1060.00
+    },
+    {
+      "id": 12,
+      "room": 12,
+      "name": "Murgan",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 50000.00,
+      "rent": 1840.00
+    },
+    {
+      "id": 13,
+      "room": 13,
+      "name": "Lalu",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 50000.00,
+      "rent": 2000.00
+    },
+    {
+      "id": 14,
+      "room": 14,
+      "name": "Pramod",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 30000.00,
+      "rent": 1725.00
+    },
+    {
+      "id": 15,
+      "room": 15,
+      "name": "Dullal",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 60000.00,
+      "rent": 2000.00
+    },
+    {
+      "id": 16,
+      "room": 16,
+      "name": "Najeeb",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 125000.00,
+      "rent": 6000.00
+    },
+    {
+      "id": 18,
+      "room": 17,
+      "name": "Jahangir",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 35000.00,
+      "rent": 9000.00
+    },
+    {
+      "id": 19,
+      "room": 18,
+      "name": "Ajitha Kumari",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 40000.00,
+      "rent": 10000.00
+    },
+    {
+      "id": 20,
+      "room": 19,
+      "name": "Fasil",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 40000.00,
+      "rent": 9500.00
+    },
+    {
+      "id": 21,
+      "room": 20,
+      "name": "Bindu",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 40000.00,
+      "rent": 9500.00
+    },
+    {
+      "id": 22,
+      "room": 21,
+      "name": "Latheef",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 40000.00,
+      "rent": 0.00
+    },
+    {
+      "id": 23,
+      "room": 22,
+      "name": "Harris",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 40000.00,
+      "rent": 8500.00
+    },
+    {
+      "id": 24,
+      "room": 23,
+      "name": "Mohan Lal",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 50000.00,
+      "rent": 12000.00
+    },
+    {
+      "id": 25,
+      "room": 24,
+      "name": "Rehana",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 20000.00,
+      "rent": 9000.00
+    },
+    {
+      "id": 26,
+      "room": 25,
+      "name": "Jahangir",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 40000.00,
+      "rent": 12000.00
+    },
+    {
+      "id": 27,
+      "room": 26,
+      "name": "Niyaz",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 30000.00,
+      "rent": 8000.00
+    },
+    {
+      "id": 28,
+      "room": 27,
+      "name": "Kadir",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 75000.00,
+      "rent": 8000.00
+    },
+    {
+      "id": 29,
+      "room": 28,
+      "name": "Bijesh k",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 65000.00,
+      "rent": 7000.00
+    },
+    {
+      "id": 30,
+      "room": 29,
+      "name": "Naseem Khan",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 50000.00,
+      "rent": 6000.00
+    },
+    {
+      "id": 31,
+      "room": 30,
+      "name": "Keerthy raj",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 75000.00,
+      "rent": 7000.00
+    },
+    {
+      "id": 32,
+      "room": 31,
+      "name": "Shaileah Kumar",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 150000.00,
+      "rent": 20000.00
+    },
+    {
+      "id": 33,
+      "room": 32,
+      "name": "Miraz",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 40000.00,
+      "rent": 9000.00
+    },
+    {
+      "id": 34,
+      "room": 33,
+      "name": "Moideen",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 40000.00,
+      "rent": 8500.00
+    },
+    {
+      "id": 35,
+      "room": 34,
+      "name": "Shaukath",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 40000.00,
+      "rent": 8500.00
+    },
+    {
+      "id": 36,
+      "room": 35,
+      "name": "Anwar",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 40000.00,
+      "rent": 8500.00
+    },
+    {
+      "id": 37,
+      "room": 36,
+      "name": "Razak",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 40000.00,
+      "rent": 8000.00
+    },
+    {
+      "id": 38,
+      "room": 37,
+      "name": "Samad",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 40000.00,
+      "rent": 8000.00
+    },
+    {
+      "id": 39,
+      "room": 38,
+      "name": "Moorthi",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 35000.00,
+      "rent": 7500.00
+    },
+    {
+      "id": 40,
+      "room": 39,
+      "name": "Ramla",
+      "phone": null,
+      "whatsapp": null,
+      "agreement_start": null,
+      "agreement_end": null,
+      "advance": 40000.00,
+      "rent": 8000.00
+    }
+  ]
 }

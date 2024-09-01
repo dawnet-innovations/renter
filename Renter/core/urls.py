@@ -14,6 +14,5 @@ urlpatterns = [
     path('add-room', login_required(views.add_room), name='add-room'),
     path('add-renter', login_required(views.add_renter), name='add-renter'),
     path('pay-rent/<int:id>', login_required(views.rent_pay), name='pay-rent'),
-    path('bill/<int:id>', login_required(views.rent_bill_view), name='bill'),
-    path('bill/download/<int:id>', login_required(views.rent_bill_download), name='bill_download'),
+    path('bill/<int:id>', login_required(views.bill), name='bill'),
 ]

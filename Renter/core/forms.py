@@ -5,6 +5,13 @@ from .models import Renter, Room, Rent
 
 class RenterForm(ModelForm):
 
+    def __init__(self, *args, **kwargs):
+        super(RenterForm, self).__init__(*args, **kwargs)
+        self.fields['phone'].required = False
+        self.fields['whatsapp'].required = False
+        self.fields['agreement_start'].required = False
+        self.fields['agreement_end'].required = False
+
     class Meta:
         model = Renter
         fields = "__all__"

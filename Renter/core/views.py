@@ -1,10 +1,6 @@
 from datetime import datetime
 
-import pdfkit
-from django.conf import settings
-from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
-from django.template.loader import render_to_string
 from django.urls import reverse_lazy
 
 from .forms import RenterForm, RoomForm, RentForm
@@ -147,34 +143,10 @@ def rent_pay(request, id):
             return redirect(reverse_lazy("renter", kwargs={"id": id}))
 
 
-def generate_bill(html_content):
-    config = pdfkit.configuration(wkhtmltopdf=settings.WKHTMLTOX_PATH)
-    options = {
-        'page-size': 'A4',  # Page size options: 'A4', 'Letter', etc.
-        'margin-top': '10mm',  # Top margin
-        'margin-right': '10mm',  # Right margin
-        'margin-bottom': '10mm',  # Bottom margin
-        'margin-left': '10mm',  # Left margin
-    }
-    pdf = pdfkit.from_string(html_content, False, configuration=config, options=options)
-    return pdf
-
-
-def rent_bill_view(request, id):
+def bill(request, id):
     rent = Rent.objects.get(id=id)
-    html_content = render_to_string("bill.html", {"rent": rent})
-    bill = generate_bill(html_content)
-    response = HttpResponse(bill, content_type='application/pdf')
-    return response
-
-
-def rent_bill_download(request, id):
-    rent = Rent.objects.get(id=id)
-    html_content = render_to_string("bill.html", {"rent": rent})
-    bill = generate_bill(html_content)
-    response = HttpResponse(bill, content_type='application/pdf')
-    response['Content-Disposition'] = f'attachment; filename="rent_{rent.renter.name}.pdf"'
-    return response
+    if request.method == "GET":
+        return render(request, "bill.html", {"rent": rent})
 
 
 def pending(request, id):

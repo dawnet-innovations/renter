@@ -4,3 +4,4 @@ Renter/.idea
 Renter/Renter/__pycache__/
 Renter/core/__pycache__/
 Renter/core/migrations/__pycache__/
+Renter/server.log

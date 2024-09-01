@@ -51,9 +51,6 @@
                 <th>{{ renter.room }}</th>
                 <td>
                     <span class="fw-bold">{{ renter.name }}</span>
-                    <br>
-                    <p class="text-">PAID : <span class="fw-bold">{{ renter.paid_amount }}</span> ON <span class="fw-bold">{{ renter.payment_date }}</span></p>
-                    <p class="text-">DUE  : <span class="fw-bold">{{ renter.due_amount }}</span></p>
                     <div class="input-group mb-3" style="max-width: 200px;">
                         <a href="{% url 'renter' id=renter.id %}" class="btn btn-outline-primary btn-sm m-2">
                             VIEW DETAILS

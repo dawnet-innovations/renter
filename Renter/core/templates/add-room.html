@@ -20,7 +20,11 @@
             <div class="mb-3">
                 <label for="buildingName" class="form-label">Building </label>
                 <select id="buildingName" name="building" class="form-select">
-                    <option value="" disabled selected>Select a building</option>
+                    {% if room %}
+                    	<option value="{{ room.building.id }}" selected>{{ room.building.name }}</option>
+                    {% else %}
+                        <option value="" disabled selected>Select a building</option>
+                    {% endif %}
                     {% for build in buildings %}
                     <option value="{{ build.id }}"> {{ build.name }} </option>
                     {% endfor %}
@@ -29,7 +33,7 @@
             </div>
             <div class="mb-3">
                 <label for="buildingName" class="form-label">Add Room </label>
-                <input name="name" type="text" class="form-control" id="buildingName" placeholder="Enter Room Name ">
+                <input name="name" type="text" class="form-control" id="buildingName" placeholder="Enter Room Name " value="{{ room.name }}">
             </div>
             
             <button type="submit" class="btn btn-primary w-100">ADD</button>

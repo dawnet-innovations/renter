@@ -9,7 +9,7 @@
         <i style="font-size: 1.5rem; color: grey;" class="fa-solid fa-arrow-left mt-3 mx-3"></i>
     </a>
 
-    <h1 class="fw-bold text-center m-3"> {{ renter.room }} </h1>
+    <h1 class="fw-bold text-center m-3"> {{ renter.room }} </h1> <a href="{% url 'edit-room' id=renter.room.id %}">edit</a>
 
     <div class="container mt-5">
 
@@ -36,8 +36,11 @@
                     PAY
                 </a>
             </div>
-
-
+        </div>
+        <div class="col">
+            <a href="{% url 'edit-renter' id=renter.id %}" class="btn btn-outline-success btn-sm m-2">
+                edit
+            </a>
         </div>
 
 
@@ -100,6 +103,9 @@
                 <th scope="col">
                     <h5 class="fw-bold">VIEW</h5>
                 </th>
+                <th scope="col">
+                    <h5 class="fw-bold"></h5>
+                </th>
                 </thead>
                 <tbody>
                 {% for rent in rents %}
@@ -114,6 +120,13 @@
                             <div class="input-group mb-3" style="max-width: 200px;">
                                 <a href="{% url 'bill' id=rent.id %}" class="btn btn-outline-primary btn-sm m-2">
                                     View
+                                </a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="input-group mb-3" style="max-width: 200px;">
+                                <a href="{% url 'edit-rent' id=rent.id %}" class="btn btn-outline-primary btn-sm m-2">
+                                    edit
                                 </a>
                             </div>
                         </td>

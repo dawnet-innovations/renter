@@ -9,7 +9,7 @@
     <i style="font-size: 1.5rem; color: grey;" class="fa-solid fa-arrow-left mt-3 mx-3"></i>
 </a>
 
-<h1 class="fw-bold text-center m-3"> {{ building.name }} </h1>
+<h1 class="fw-bold text-center m-3"> {{ building.name }} </h1> <a href="{% url 'edit-building' id=building.id %}">edit</a>
 
 <div class="container mt-5">
     <div class="row">

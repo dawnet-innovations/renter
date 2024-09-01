@@ -19,7 +19,7 @@
             {% csrf_token %}
             <div class="mb-3">
                 <label for="buildingName" class="form-label">Building Name</label>
-                <input type="text" class="form-control" name="name" id="buildingName" placeholder="Enter building name">
+                <input type="text" class="form-control" name="name" id="buildingName" placeholder="Enter building name" value="{{ building.name }}">
             </div>
             <button type="submit" class="btn btn-primary w-100">ADD</button>
         </form>

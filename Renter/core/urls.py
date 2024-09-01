@@ -11,8 +11,12 @@ urlpatterns = [
     path('pending/<int:id>', login_required(views.pending), name='pending'),
     path('renter/pending/<int:id>', login_required(views.renter_pendings), name='renter_pending'),
     path('add-building', login_required(views.add_building), name='add-building'),
+    path('edit-building/<int:id>', login_required(views.edit_building), name='edit-building'),
     path('add-room', login_required(views.add_room), name='add-room'),
+    path('edit-room/<int:id>', login_required(views.edit_room), name='edit-room'),
     path('add-renter', login_required(views.add_renter), name='add-renter'),
+    path('edit-renter/<int:id>', login_required(views.edit_renter), name='edit-renter'),
     path('pay-rent/<int:id>', login_required(views.rent_pay), name='pay-rent'),
+    path('edit-rent/<int:id>', login_required(views.edit_pay), name='edit-rent'),
     path('bill/<int:id>', login_required(views.bill), name='bill'),
 ]

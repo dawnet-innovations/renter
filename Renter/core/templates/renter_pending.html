@@ -19,30 +19,27 @@
             <th scope="col">
                 <h5 class="fw-bold">AMOUNT</h5>
             </th>
-            <th scope="col">
-                <h5 class="fw-bold">VIEW</h5>
-            </th>
             </thead>
             <tbody>
             {% for rent in rents %}
                 <tr>
                     <th>{{ rent.date|date:"Y-m-d" }}</th>
 
-                    <td><span class="fw-bold">{{ rent.amount_paid|floatformat:2 }}</span>
+                    <td><span class="fw-bold">{{ rent.balance|floatformat:2 }}</span>
 
                     </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="4" class="text-center">No pending</td>
+                </tr>
+            {% endfor %}
+            {% for m in monthly_rent %}
+                <tr>
+                    <th>{{ m|date:"Y-m-d" }}</th>
 
-                    <td>
-                        <div class="input-group mb-3" style="max-width: 200px;">
-                            <a href="{% url 'bill' id=rent.id %}" class="btn btn-outline-primary btn-sm m-2">
-                                View
-                            </a>
-                        </div>
-                        <div class="input-group mb-3" style="max-width: 200px; display: ">
-                            <a href="{% url 'bill_download' id=rent.id %}" class="btn btn-outline-primary btn-sm m-2">
-                                Download
-                            </a>
-                        </div>
+                    <td><span class="fw-bold">{{ rentfee|floatformat:2 }}</span>
+
                     </td>
                 </tr>
             {% empty %}

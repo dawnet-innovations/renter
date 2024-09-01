@@ -20,7 +20,11 @@
             <div class="mb-3">
                 <label for="buildingName" class="form-label">Building </label>
                 <select id="buildingName" name="building" class="form-select">
-                    <option value="" disabled selected>Select a building</option>
+                    {% if renter %}
+                    	<option value="{{ renter.room.building.id }}" selected>{{ renter.room.building.name }}</option>
+                    {% else %}
+                        <option value="" disabled selected>Select a building</option>
+                    {% endif %}
                     {% for build in buildings %}
                     <option value="{{ build.id }}"> {{ build.name }} </option>
                     {% endfor %}
@@ -30,7 +34,11 @@
             <div class="mb-3">
                 <label for="buildingName" class="form-label">Room </label>
                 <select id="buildingName" name="room" class="form-select">
-                    <option value="" disabled selected>Select a room</option>
+                    {% if renter %}
+                    	<option value="{{ renter.room.id }}" selected>{{ renter.room.name }}</option>
+                    {% else %}
+                        <option value="" disabled selected>Select a building</option>
+                    {% endif %}
                     {% for room in rooms %}
                     <option value="{{ room.id }}"> {{ room.name }} </option>
                     {% endfor %}
@@ -39,31 +47,31 @@
             </div>
             <div class="mb-3">
                 <label for="buildingName" class="form-label">Name </label>
-                <input name="name" type="text" class="form-control" id="buildingName" placeholder="Enter Name ">
+                <input name="name" type="text" class="form-control" id="buildingName" placeholder="Enter Name " value="{{ renter.name }}">
             </div>
             <div class="mb-3">
                 <label for="buildingName" class="form-label">Phone No </label>
-                <input name="phone" type="text" class="form-control" id="buildingName" placeholder="Enter Phone Number ">
+                <input name="phone" type="text" class="form-control" id="buildingName" placeholder="Enter Phone Number " value="{{ renter.phone }}">
             </div>
             <div class="mb-3">
                 <label for="buildingName" class="form-label">Whatsapp  </label>
-                <input name="whatsapp" type="text" class="form-control" id="buildingName" placeholder="Enter WhatsApp Number (optional) ">
+                <input name="whatsapp" type="text" class="form-control" id="buildingName" placeholder="Enter WhatsApp Number (optional) " value="{{ renter.whatsapp }}">
             </div>
             <div class="mb-3">
                 <label for="buildingName" class="form-label">Advance </label>
-                <input name="advance" type="text" class="form-control" id="buildingName" placeholder="Enter Advance Amount ">
+                <input name="advance" type="text" class="form-control" id="buildingName" placeholder="Enter Advance Amount " value="{{ renter.advance }}">
             </div>
             <div class="mb-3">
                 <label for="buildingName" class="form-label">agreement start </label>
-                <input name="agreement_start" type="date" class="form-control" id="datePicker">
+                <input name="agreement_start" type="date" class="form-control" id="datePicker" value="{{ renter.agreement_start }}">
             </div>
             <div class="mb-3">
                 <label for="buildingName" class="form-label">agreement end </label>
-                <input name="agreement_end" type="date" class="form-control" id="datePicker">
+                <input name="agreement_end" type="date" class="form-control" id="datePicker" value="{{ renter.agreement_end.date|date:'d-m-Y' }}">
             </div>
             <div class="mb-3">
                 <label for="buildingName" class="form-label">Rent </label>
-                <input name="rent" type="text" class="form-control" id="buildingName" placeholder="Enter Rent ">
+                <input name="rent" type="text" class="form-control" id="buildingName" placeholder="Enter Rent " value="{{ renter.rent|floatformat:2 }}">
             </div>
             <button type="submit" class="btn btn-primary w-100">ADD</button>
         </form>

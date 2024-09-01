@@ -32,7 +32,8 @@ SECRET_KEY = 'django-insecure-f6@%h1!e1bad^p$#a&%n79r7n(dwwodk6vfz6kic#ka_5f3qzf
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["https://carlo.solutions/", "carlo.solutions"]
+ALLOWED_HOSTS = ["https://carlo.solutions/", "carlo.solutions", "http://127.0.0.1/", "127.0.0.1"]
+
 
 AUTH_USER_MODEL = 'users.User'
 
@@ -86,11 +87,11 @@ WSGI_APPLICATION = 'Renter.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'carlo_renter_app',
+        'NAME': env("DB_NAME"),
         'USER': env("DB_USER"),
         'PASSWORD': env("DB_PASSWORD"),
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'HOST': env("DB_HOST"),
+        'PORT': env("DB_POST"),
     }
 }
 

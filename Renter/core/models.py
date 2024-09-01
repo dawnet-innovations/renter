@@ -1,3 +1,5 @@
+import datetime
+
 from django.db import models
 
 
@@ -34,7 +36,8 @@ class Rent(models.Model):
     renter = models.ForeignKey(Renter, on_delete=models.CASCADE, related_name='%(class)s_renter')
     amount_paid = models.DecimalField(max_digits=10, decimal_places=5)
     balance = models.DecimalField(max_digits=10, decimal_places=5, default=0)
-    date = models.DateTimeField(auto_now_add=True)
+    date = models.DateTimeField(auto_now=True)
+    pay_for = models.DateField()
 
     def is_paid(self):
         return self.balance == 0

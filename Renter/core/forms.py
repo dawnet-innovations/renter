@@ -27,5 +27,5 @@ class RoomForm(ModelForm):
 class RentForm(ModelForm):
     class Meta:
         model = Rent
-        fields = ("amount_paid",)
+        fields = ("amount_paid", "pay_for")
 

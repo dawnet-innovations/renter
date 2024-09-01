@@ -21,6 +21,18 @@
                 <label for="amount_paid" class="form-label">Amount</label>
                 <input type="text" class="form-control" name="amount_paid" id="buildingName" placeholder="Enter Amount"  value="{{ rent.amount_paid|floatformat:2 }}">
             </div>
+            
+            {% if rent %}
+                <div class="mb-3">
+                    <label for="pay_for" class="form-label">For</label>
+                    <input name="pay_for" type="date" class="form-control" id="datePicker" value="{{ rent.pay_for|date:'Y-m-d' }}">
+                </div>
+            {% else %}
+                <div class="mb-3">
+                    <label for="pay_for" class="form-label">For</label>
+                    <input name="pay_for" type="date" class="form-control" id="datePicker">
+                </div>
+            {% endif %}
             <button type="submit" class="btn btn-primary w-100">ADD</button>
         </form>
     </div>

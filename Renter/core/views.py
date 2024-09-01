@@ -1,9 +1,8 @@
 from datetime import datetime
-from dateutil.relativedelta import relativedelta
 
+from dateutil.relativedelta import relativedelta
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
-from django.utils import timezone
 
 from .forms import RenterForm, RoomForm, RentForm
 from .models import Building, Renter, Room, Rent
@@ -32,7 +31,7 @@ def edit_building(request, id):
         if name:
             building.name = name
             building.save()
-        return redirect("/")
+        return redirect(reverse_lazy("building", kwargs={"id": id}))
 
 
 def delete_building(request, id):
@@ -54,11 +53,25 @@ def index(request):
     rents = Rent.objects.all()
     pending_count = {building: 0 for building in buildings}
     monthly_total = {building: 0 for building in buildings}
+    renters = []
     for rent in rents:
         monthly_total[rent.renter.room.building] += rent.amount_paid
         if not rent.is_paid():
-            if not Rent.objects.filter(renter=rent.renter, date__month=rent.date.month, balance=0).exists():
-                pending_count[rent.renter.room.building] += 1
+            if not Rent.objects.filter(renter=rent.renter, pay_for__month=rent.date.month, balance=0).exists():
+                if rent.renter not in renters:
+                    pending_count[rent.renter.room.building] += 1
+                    renters.append(rent.renter)
+
+    for building, count in pending_count.items():
+        for renter in Renter.objects.filter(room__building=building):
+            if renter.agreement_start and renter.agreement_end:
+                for date in months_between(renter.agreement_start, renter.agreement_end):
+                    if datetime(day=date.day, month=date.month, year=date.year) <= datetime.now():
+                        rents = Rent.objects.filter(pay_for__month=date.month, pay_for__year=date.year, renter=renter)
+                        if not rents.exists():
+                            if renter not in renters:
+                                pending_count[building] += 1
+                                renters.append(renter)
 
     if request.method == "GET":
         context = {
@@ -103,14 +116,15 @@ def edit_room(request, id):
         name = request.POST['name']
         room.name = name
         room.save()
-        return redirect("/")
+        return redirect(reverse_lazy("renter", kwargs={"id": id}))
 
 
 def delete_room(request, id):
     room = get_object_or_404(Room, id=id)
+    b_id = room.building.id
     if request.method == "GET":
         room.delete()
-        return redirect("/")
+        return redirect(reverse_lazy("building", kwargs={"id": b_id}))
 
 
 def add_renter(request):
@@ -148,7 +162,7 @@ def edit_renter(request, id):
         form = RenterForm(request.POST, instance=renter)
         if form.is_valid():
             form.save()
-            return redirect("/")
+            return redirect(reverse_lazy("renter", kwargs={"id": id}))
         else:
             context = {
                 "buildings": Building.objects.all().order_by("-id"),
@@ -159,9 +173,10 @@ def edit_renter(request, id):
 
 def delete_renter(request, id):
     renter = get_object_or_404(Renter, id=id)
+    b_id = renter.room.building.id
     if request.method == "GET":
         renter.delete()
-        return redirect("/")
+        return redirect(reverse_lazy("building", kwargs={"id": b_id}))
 
 
 def building(request, id):
@@ -169,7 +184,7 @@ def building(request, id):
     building = get_object_or_404(Building, id=id)
     rooms = Room.objects.filter(building=building)
     renters = Renter.objects.filter(room__in=rooms)
-    rents = Rent.objects.filter(date__month=now.month)
+    rents = Rent.objects.filter(pay_for__month=now.month)
     total = 0
     for rent in rents:
         if rent.renter.room.building.id == building.id:
@@ -185,26 +200,27 @@ def building(request, id):
 
 def renter(request, id):
     renter = Renter.objects.get(id=id)
-    rents = Rent.objects.filter(renter=renter).all()
     total_rent = 0
-    for rent in rents:
-        total_rent += rent.amount_paid
     due = 0
-    for rent in rents:
-        due += rent.balance
     duemc = 0
-    if renter.agreement_start:
+    if renter.agreement_start and renter.agreement_end:
         for date in months_between(renter.agreement_start, renter.agreement_end):
             if datetime(day=date.day, month=date.month, year=date.year) <= datetime.now():
-                rents = Rent.objects.filter(date__month=date.month, date__year=date.year, renter=renter)
+                rents = Rent.objects.filter(pay_for__month=date.month, pay_for__year=date.year, renter=renter)
                 if not rents.exists():
                     duemc += 1
+                else:
+                    due += rents.last().balance
+                    for rent in rents:
+                        total_rent += rent.amount_paid
+
+
     if duemc != 0:
-        due += duemc*renter.rent
+        due += duemc * renter.rent
 
     context = {
         "renter": renter,
-        "rents": rents.order_by("-id"),
+        "rents": Rent.objects.filter(renter=renter).order_by("-id"),
         "total_rent": total_rent,
         "due": due
     }
@@ -220,11 +236,15 @@ def rent_pay(request, id):
         form = RentForm(request.POST)
         form.instance.renter = renter
 
-        print(form.errors)
         if form.is_valid():
             amount_paid = form.cleaned_data["amount_paid"]
-            if amount_paid != renter.rent:
-                form.balance = renter.rent - amount_paid
+            pay_for = form.cleaned_data["pay_for"]
+            last_pay = Rent.objects.filter(renter=renter, pay_for__month=pay_for.month, pay_for__year=pay_for.year)
+            if last_pay.exists():
+                form.instance.balance = last_pay.last().balance - amount_paid
+            else:
+                if amount_paid != renter.rent:
+                    form.instance.balance = renter.rent - amount_paid
             form.save()
             return redirect(reverse_lazy("renter", kwargs={"id": id}))
 
@@ -237,10 +257,24 @@ def edit_pay(request, id):
     if request.method == "POST":
         amount_paid = request.POST["amount_paid"]
         rent.amount_paid = amount_paid
-        if amount_paid != rent.renter.rent:
-            rent.balance = float(rent.renter.rent) - float(amount_paid)
+        pay_for = datetime.strptime(request.POST["pay_for"], "%Y-%m-%d")
+        last_pay = Rent.objects.filter(renter=rent.renter, pay_for__month=pay_for.month, pay_for__year=pay_for.year).exclude(id=rent.id)
+        if last_pay.exists():
+            rent.balance = float(last_pay.last().balance) - float(amount_paid)
+        else:
+            if float(amount_paid) != float(rent.renter.rent):
+                rent.balance = float(rent.renter.rent) - float(amount_paid)
+        rent.pay_for = pay_for
         rent.save()
         return redirect(reverse_lazy("renter", kwargs={"id": rent.renter.id}))
+
+
+def delete_rent(request, id):
+    rent = get_object_or_404(Rent, id=id)
+    if request.method == "GET":
+        rent.delete()
+        return redirect(reverse_lazy("renter", kwargs={"id": rent.renter.id}))
+
 
 
 def bill(request, id):
@@ -262,16 +296,16 @@ def pending(request, id):
     renters = Renter.objects.filter(room__building=building)
 
     pending_rents = []
-    if renter.agreement_start:
-        for renter in renters:
+    for renter in renters:
+        if renter.agreement_start and renter.agreement_end:
             for date in months_between(renter.agreement_start, renter.agreement_end):
                 if datetime(day=date.day, month=date.month, year=date.year) <= now:
-                    rents = Rent.objects.filter(date__month=date.month, date__year=date.year, renter=renter)
+                    rents = Rent.objects.filter(pay_for__month=date.month, pay_for__year=date.year, renter=renter)
                     if rents.exists():
                         for rent in rents:
                             if not rent.is_paid():
-                                if not Rent.objects.filter(renter=rent.renter, date__month=rent.date.month,
-                                                           date__year=rent.date.year,
+                                if not Rent.objects.filter(renter=rent.renter, pay_for__month=rent.pay_for.month,
+                                                           pay_for__year=rent.pay_for.year,
                                                            balance=0).exists():
                                     if renter not in pending_rents:
                                         pending_rents.append(renter)
@@ -291,15 +325,14 @@ def renter_pendings(request, id):
 
     pending_rents = []
     monthly_rent = []
-    if renter.agreement_start:
+    if renter.agreement_start and renter.agreement_end:
         for date in months_between(renter.agreement_start, renter.agreement_end):
             if datetime(day=date.day, month=date.month, year=date.year) <= now:
-                rents = Rent.objects.filter(date__month=date.month, date__year=date.year, renter=renter)
+                rents = Rent.objects.filter(pay_for__month=date.month, pay_for__year=date.year, renter=renter)
                 if rents.exists():
                     for rent in rents:
                         if not rent.is_paid():
-                            if not Rent.objects.filter(renter=rent.renter, date__month=rent.date.month, date__year=rent.date.year,
-                                                       balance=0).exists():
+                            if not Rent.objects.filter(renter=rent.renter, pay_for__month=rent.pay_for.month, pay_for__year=rent.pay_for.year, balance=0).exists():
                                 pending_rents.append(rent)
                 else:
                     monthly_rent.append(date)

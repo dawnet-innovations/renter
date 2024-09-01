@@ -1,19 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rent Receipt</title>
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} BILL {% endblock %}
+
+{% block body %}
+
+<body>
+
     <style>
-        body {
+        section {
             font-family: Arial, sans-serif;
+            padding: 10px;
         }
         .receipt {
+            max-width: 100%;
             width: 600px;
             padding: 20px;
             border: 2px solid black;
             margin: 0 auto;
+            box-sizing: border-box;
         }
         .header {
             text-align: center;
@@ -52,33 +58,101 @@
         .signature {
             text-align: left;
         }
+
+        /* Print Button Style */
+        .print-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .print-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .receipt {
+                width: 90%;
+                padding: 15px;
+            }
+            .header .title,
+            .header .name {
+                font-size: 16px;
+            }
+            .footer .amount {
+                width: auto;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .receipt {
+                width: 100%;
+                padding: 10px;
+            }
+            .header .title,
+            .header .name {
+                font-size: 14px;
+            }
+            .footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .footer .amount {
+                margin-bottom: 10px;
+            }
+            .signature {
+                text-align: center;
+                width: 100%;
+            }
+        }
     </style>
-</head>
-<body>
-    <div class="receipt">
-        <div class="header">
-            <div class="title">LICENCE FEE / RENT RECEIPT</div>
-            <div class="name">ABDUL NAZAR</div>
-            <div class="address">"MAXIMA", CHALAPPURAM, KOZHIKODE</div>
+
+    <section class="m-3">
+
+        <button class="print-button" onclick="printPage()">Print Receipt</button>
+
+        <div class="receipt" id="receipt">
+            <div class="header">
+                <div class="title">LICENCE FEE / RENT RECEIPT</div>
+                <div class="name">ABDUL NAZAR</div>
+                <div class="address">"MAXIMA", CHALAPPURAM, KOZHIKODE</div>
+            </div>
+            <div class="content">
+                <div class="line">
+                    Receipt No. <span style="color: red;">{{ rent.id }}</span> &emsp; Date: {{ rent.date|date:'d-m-Y' }}
+                </div>
+                <div class="line">
+                    Received with thanks from Mr./Mrs./M/s <span class="fw-bold">{{ rent.renter.name }}</span>
+                </div>
+                <div class="line">
+                    the sum of rupees <span class="fw-bold"> {{ rent.amount_paid|floatformat:2 }} </span>
+                </div>
+                <div class="line">
+                    towards licence fees / Rent for the Room No.{{ rent.renter.room.name }} for the month {{ rent.pay_for|date:'F' }}
+                </div>
+            </div>
+            <div class="footer">
+                <div class="amount">₹ {{ rent.amount_paid|floatformat:2 }}</div>
+                <div class="signature">Signature</div>
+            </div>
         </div>
-        <div class="content">
-            <div class="line">
-                Receipt No. <span style="color: red;">{{ rent.id }}</span> &emsp; Date: {{ rent.date|date:'d-m-Y' }}
-            </div>
-            <div class="line">
-                Received with thanks from Mr./Mrs./M/s {{ rent.renter.name }}
-            </div>
-            <div class="line">
-                the sum of rupees {{ rent.amount_paid|floatformat:2 }}
-            </div>
-            <div class="line">
-                towards licence fees / Rent for the Room No. {{ rent.renter.room.name }} for the month {{ rent.date|date:'m' }}
-            </div>
-        </div>
-        <div class="footer">
-            <div class="amount">₹ {{ rent.amount_paid|floatformat:2 }}</div>
-            <div class="signature">Signature</div>
-        </div>
-    </div>
+
+    </section>
+
+    <script>
+        function printPage() {
+            window.print();
+        }
+    </script>
+
 </body>
 </html>
+
+{% endblock %}

@@ -67,11 +67,11 @@
             </div>
             <div class="mb-3">
                 <label for="buildingName" class="form-label">agreement end </label>
-                <input name="agreement_end" type="date" class="form-control" id="datePicker" value="{{ renter.agreement_end.date|date:'d-m-Y' }}">
+                <input name="agreement_end" type="date" class="form-control" id="datePicker" value="{{ renter.agreement_end }}">
             </div>
             <div class="mb-3">
                 <label for="buildingName" class="form-label">Rent </label>
-                <input name="rent" type="text" class="form-control" id="buildingName" placeholder="Enter Rent " value="{{ renter.rent|floatformat:2 }}">
+                <input name="rent" type="text" class="form-control" id="buildingName" placeholder="Enter Rent " value="{{ renter.rent }}">
             </div>
             <button type="submit" class="btn btn-primary w-100">ADD</button>
         </form>

@@ -81,6 +81,9 @@
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">
+                        <h4 class="fw-bold">#</h4>
+                    </th>
+                    <th scope="col">
                         <h4 class="fw-bold">ROOM NO</h4>
                     </th>
                     <th class="text-" scope="col" colspan="2">
@@ -94,6 +97,9 @@
             <tbody id="table-body">
                 {% for renter in renters %}
                 <tr>
+                    <td>
+                        <span class="fw-bold">{{ forloop.counter }}</span>
+                    </td>
                     <th>{{ renter.room }}</th>
                     <td>
                         <span class="fw-bold">{{ renter.name }}</span>

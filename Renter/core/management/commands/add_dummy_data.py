@@ -65,7 +65,6 @@ class Command(BaseCommand):
                     self.add_buildings(json_data["buildings"])
                     self.add_rooms(json_data["rooms"])
                     self.add_renters(json_data["renters"])
-                    self.add_rents(json_data["rents"])
         except Exception as e:
             self.stderr.write(self.style.ERROR(f'Error occurred: {e}'))
             self.stdout.write(self.style.ERROR('Rolling back changes due to an error.'))

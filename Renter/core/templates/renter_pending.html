@@ -23,17 +23,16 @@
             <tbody>
             {% for rent in rents %}
                 <tr>
-                    <th>{{ rent.date|date:"Y-m-d" }}</th>
+                    <th>{{ rent.pay_for|date:"Y-m-d" }}</th>
 
                     <td><span class="fw-bold">{{ rent.balance|floatformat:2 }}</span>
 
                     </td>
                 </tr>
-            {% empty %}
-                <tr>
-                    <td colspan="4" class="text-center">No pending</td>
-                </tr>
             {% endfor %}
+            <tr>
+                <td></td>
+            </tr>
             {% for m in monthly_rent %}
                 <tr>
                     <th>{{ m|date:"Y-m-d" }}</th>
@@ -41,10 +40,6 @@
                     <td><span class="fw-bold">{{ rentfee|floatformat:2 }}</span>
 
                     </td>
-                </tr>
-            {% empty %}
-                <tr>
-                    <td colspan="4" class="text-center">No pending</td>
                 </tr>
             {% endfor %}
             </tbody>

@@ -30,9 +30,9 @@ environ.Env.read_env(os.path.join(BASE_DIR, 'Renter', ".env"))
 SECRET_KEY = 'django-insecure-f6@%h1!e1bad^p$#a&%n79r7n(dwwodk6vfz6kic#ka_5f3qzf'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["https://carlo.solutions/", "carlo.solutions"]
 
 AUTH_USER_MODEL = 'users.User'
 
@@ -57,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'Renter.urls'
@@ -84,8 +85,12 @@ WSGI_APPLICATION = 'Renter.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'carlo_renter_app',
+        'USER': env("DB_USER"),
+        'PASSWORD': env("DB_PASSWORD"),
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
@@ -122,13 +127,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-WKHTMLTOX_PATH = join(BASE_DIR, "Renter", "wkhtmltox", "bin", "wkhtmltopdf.exe")
 
 LOGIN_URL = "users:login"
 LOGIN_REDIRECT_URL = "users:redirect-user"
@@ -145,3 +149,19 @@ TOKEN_EXPIRY = {
 }
 
 OTP_LENGTH = 6
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'logfile': {
+            'class': 'logging.FileHandler',
+            'filename': 'server.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['logfile'],
+        },
+    },
+}

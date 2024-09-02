@@ -35,7 +35,7 @@
     <br>
 
     <p class="text-" style="font-size: 1.3rem">MONTH TOTAL : {{ total|floatformat:2 }}
-{#        <a href="" class="btn btn-outline-danger btn-sm m-2">VIEW</a>#}
+        <a href="{% url 'building_mothly_total' id=building.id  %}" class="btn btn-outline-danger btn-sm m-2">VIEW</a>
     </p>
 
     <div class="table-responsive">
@@ -71,6 +71,11 @@
                             <div class="input-group mb-3" style="max-width: 200px;">
                                 <a href="{% url 'renter' id=renter.id %}" class="btn btn-outline-primary btn-sm m-2">
                                     VIEW DETAILS
+                                </a>
+                            </div>
+                            <div class="input-group mb-3" style="max-width: 200px;">
+                                <a href="{% url 'pay-rent' id=renter.id %}" class="btn btn-outline-primary btn-sm m-2">
+                                    PAY
                                 </a>
                             </div>
                         </td>

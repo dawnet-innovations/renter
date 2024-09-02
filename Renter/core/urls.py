@@ -23,4 +23,6 @@ urlpatterns = [
     path('edit-rent/<int:id>', login_required(views.edit_pay), name='edit-rent'),
     path('delete-rent/<int:id>', login_required(views.delete_rent), name='delete-rent'),
     path('bill/<int:id>', login_required(views.bill), name='bill'),
+    path('building_mothly_total/<int:id>', login_required(views.building_mothly_total), name='building_mothly_total'),
+    path('mothly_total/', login_required(views.monthly_total), name='mothly_total'),
 ]

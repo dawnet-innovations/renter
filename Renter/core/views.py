@@ -8,6 +8,7 @@ from .forms import RenterForm, RoomForm, RentForm
 from .models import Building, Renter, Room, Rent
 
 
+
 def add_building(request):
     if request.method == "GET":
         return render(request, "add-building.html")
@@ -184,11 +185,10 @@ def building(request, id):
     building = get_object_or_404(Building, id=id)
     rooms = Room.objects.filter(building=building)
     renters = Renter.objects.filter(room__in=rooms)
-    rents = Rent.objects.filter(pay_for__month=now.month)
+    rents = Rent.objects.filter(date__month=now.month, date__year=now.year, renter__room__building=building)
     total = 0
     for rent in rents:
-        if rent.renter.room.building.id == building.id:
-            total += rent.amount_paid
+        total += rent.amount_paid
     context = {
         "building": building,
         "rooms": rooms.order_by("-id"),
@@ -340,3 +340,33 @@ def renter_pendings(request, id):
     context = {"rents": pending_rents, "rentfee": renter.rent, "monthly_rent": monthly_rent}
 
     return render(request, 'renter_pending.html', context=context)
+
+def building_mothly_total(request, id):
+    buildin = Building.objects.get(id=id)
+    rents = Rent.objects.filter(renter__room__building=buildin)
+    ds = {}
+    if rents:
+        start = datetime(month=rents.first().date.month, day=rents.first().date.day, year=rents.first().date.year)
+        end = datetime.now()
+        ds = {date: 0 for date in months_between(start, end)}
+        for d in ds.keys():
+            rs = rents.filter(date__month=d.month, date__year=d.year)
+            for r in rs:
+                ds[d] += r.amount_paid
+
+    return render(request, "monthly_total.html", {"totals": ds})
+
+
+def monthly_total(request):
+    rents = Rent.objects.all()
+    ds = {}
+    if rents:
+        start = datetime(month=rents.first().date.month, day=rents.first().date.day, year=rents.first().date.year)
+        end = datetime.now()
+        ds = {date: 0 for date in months_between(start, end)}
+        for d in ds.keys():
+            rs = rents.filter(date__month=d.month, date__year=d.year)
+            for r in rs:
+                ds[d] += r.amount_paid
+
+    return render(request, "monthly_total.html", {"totals": ds})

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} RENTER {% endblock %}
+
+{% block body %}
+
+    <a href="javascript:window.history.back();">
+        <i style="font-size: 1.5rem; color: grey;" class="fa-solid fa-arrow-left mt-3 mx-3"></i>
+    </a>
+    <div class="table-responsive">
+
+        <table class="table table-striped table-borderless">
+            <thead class="thead-dark">
+
+            <th scope="col">
+                <h5 class="fw-bold">DATE</h5>
+            </th>
+            <th scope="col">
+                <h5 class="fw-bold">AMOUNT</h5>
+            </th>
+            </thead>
+            <tbody>
+            {% for date, total in totals.items %}
+                <tr>
+                    <th>{{ date|date:"M-Y" }}</th>
+
+                    <td><span class="fw-bold">{{ total|floatformat:2 }}</span>
+
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+
+{% endblock %}

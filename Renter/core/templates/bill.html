@@ -1,13 +1,10 @@
-{% extends 'base.html' %}
-
-{% load static %}
-
-{% block title %} BILL {% endblock %}
-
-{% block body %}
-
-<body>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill</title>
     <style>
         section {
             font-family: Arial, sans-serif;
@@ -112,11 +109,28 @@
                 width: 100%;
             }
         }
+
+        /* Print-specific Styles */
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            @page {
+                size: auto; /* Auto size the page */
+                margin: 10mm; /* Adjust margin to fit content */
+            }
+            #print-bill {
+                display: none; /* Hide print button during print */
+            }
+        }
     </style>
+</head>
+<body>
 
     <section class="m-3">
 
-        <button class="print-button" onclick="printPage()">Print Receipt</button>
+        <button class="print-button" onclick="printPage()" id="print-bill">Print Receipt</button>
 
         <div class="receipt" id="receipt">
             <div class="header">
@@ -132,10 +146,10 @@
                     Received with thanks from Mr./Mrs./M/s <span class="fw-bold">{{ rent.renter.name }}</span>
                 </div>
                 <div class="line">
-                    the sum of rupees <span class="fw-bold"> {{ rent.amount_paid|floatformat:2 }} </span>
+                    the sum of rupees <span class="fw-bold">{{ rent.amount_paid|floatformat:2 }}</span>
                 </div>
                 <div class="line">
-                    towards licence fees / Rent for the Room No.{{ rent.renter.room.name }} for the month {{ rent.pay_for|date:'F' }}
+                    towards licence fees / Rent for the Room No. {{ rent.renter.room.name }} for the month {{ rent.pay_for|date:'F' }}
                 </div>
             </div>
             <div class="footer">
@@ -154,5 +168,3 @@
 
 </body>
 </html>
-
-{% endblock %}

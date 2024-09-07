@@ -1,5 +1,5 @@
 # Project Details
-## New Account Info
+## Server
 - Domain: abdulnazar.xyz
 - Ip: 103.191.208.92 (n)
 - HasCgi: y

@@ -1,5 +1,5 @@
-# New Account Info
----
+# Project Details
+## New Account Info
 - Domain: abdulnazar.xyz
 - Ip: 103.191.208.92 (n)
 - HasCgi: y
@@ -19,6 +19,5 @@
 - Language: en
 ---
 ## admin
----
 - user: u_001_abdnzr
 - pass: 4pQ6<@W{~6+A

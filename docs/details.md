@@ -1,6 +1,6 @@
 # Project Details
 ## Server
-- Domain: [abdulnazar.xyz](abdulnazar.xyz)
+- Domain: [abdulnazar.xyz](https://abdulnazar.xyz)
 - Ip: 103.191.208.92 (n)
 - HasCgi: y
 - UserName: abdulnazar

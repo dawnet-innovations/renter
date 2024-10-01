@@ -9,9 +9,11 @@
     <i style="font-size: 1.5rem; color: grey;" class="fa-solid fa-arrow-left mt-3 mx-3"></i>
 </a>
 
+{% if building %}
+<h1 class="fw-bold text-center m-3">EDIT BUILDING</h1>
+{% else %}
 <h1 class="fw-bold text-center m-3">ADD BUILDING</h1>
-
-
+{% endif %}
 
 <div class="container mt-5">
     <div class="form-container">
@@ -21,7 +23,11 @@
                 <label for="buildingName" class="form-label">Building Name</label>
                 <input type="text" class="form-control" name="name" id="buildingName" placeholder="Enter building name" value="{{ building.name }}">
             </div>
-            <button type="submit" class="btn btn-primary w-100">ADD</button>
+            <div class="mb-3">
+                <label for="owner" class="form-label">Owner Name</label>
+                <input type="text" class="form-control" name="owner" id="buildingName" placeholder="Owner name" value="{{ building.owner }}">
+            </div>
+            <button type="submit" class="btn btn-primary w-100">DONE</button>
         </form>
     </div>
 </div>

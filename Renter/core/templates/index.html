@@ -51,6 +51,7 @@
         <div class="card-body text-center">
           <i class="fa-solid fa-building text-primary" style="font-size: 3rem;"></i>
           <h5 class="card-title mt-3 mb-2">{{ build.name }}</h5>
+            <p class="card-text mb-1">Owner: <strong>{{ build.owner }}</strong></p>
           {% for building, count in pending_count.items %}
             {% if building.id == build.id %}
           	<p class="card-text mb-1">Pending Renter: <strong>{{ count }}</strong></p>

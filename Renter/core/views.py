@@ -15,9 +15,10 @@ def add_building(request):
 
     if request.method == "POST":
         name = request.POST.get("name")
+        owner = request.POST.get("owner")
 
         if name:
-            Building.objects.create(name=name)
+            Building.objects.create(name=name, owner=owner)
         return redirect("/")
 
 
@@ -48,20 +49,21 @@ def index(request):
     now = datetime.now()
     month_rents = Rent.objects.filter(date__month=now.month, date__year=now.year)
     total = 0
+    monthly_total = {building: 0 for building in buildings}
     for rent in month_rents:
         total += rent.amount_paid
+        monthly_total[rent.renter.room.building] += rent.amount_paid
 
     rents = Rent.objects.all()
     pending_count = {building: 0 for building in buildings}
-    monthly_total = {building: 0 for building in buildings}
     renters = []
     for rent in rents:
-        monthly_total[rent.renter.room.building] += rent.amount_paid
         if not rent.is_paid():
-            if not Rent.objects.filter(renter=rent.renter, pay_for__month=rent.date.month, balance=0).exists():
-                if rent.renter not in renters:
-                    pending_count[rent.renter.room.building] += 1
-                    renters.append(rent.renter)
+            if not Rent.objects.filter(renter=rent.renter, pay_for__month=rent.date.month, pay_for__year=rent.date.year, balance__exact=0).exists():
+                if not rent.balance < 0:
+                    if rent.renter not in renters:
+                        pending_count[rent.renter.room.building] += 1
+                        renters.append(rent.renter)
 
     for building, count in pending_count.items():
         for renter in Renter.objects.filter(room__building=building):
@@ -230,7 +232,7 @@ def renter(request, id):
 def rent_pay(request, id):
     renter = Renter.objects.get(id=id)
     if request.method == "GET":
-        return render(request, "rent.html")
+        return render(request, "rent.html", context={"renter": renter})
 
     if request.method == "POST":
         form = RentForm(request.POST)

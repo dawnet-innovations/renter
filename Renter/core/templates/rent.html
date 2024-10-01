@@ -19,7 +19,7 @@
             {% csrf_token %}
             <div class="mb-3">
                 <label for="amount_paid" class="form-label">Amount</label>
-                <input type="text" class="form-control" name="amount_paid" id="buildingName" placeholder="Enter Amount"  value="{{ rent.amount_paid|floatformat:2 }}">
+                <input type="text" class="form-control" name="amount_paid" id="buildingName" placeholder="Enter Amount"  value="{% if renter %}{{ renter.rent|floatformat:2 }}{% else %}{{ rent.amount_paid|floatformat:2 }}{% endif %}">
             </div>
             
             {% if rent %}

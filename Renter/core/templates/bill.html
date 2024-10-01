@@ -135,18 +135,18 @@
         <div class="receipt" id="receipt">
             <div class="header">
                 <div class="title">LICENCE FEE / RENT RECEIPT</div>
-                <div class="name">ABDUL NAZAR</div>
-                <div class="address">"MAXIMA", CHALAPPURAM, KOZHIKODE</div>
+                <div class="name">{{ rent.renter.room.building.owner }}</div>
+                <div class="address">"MAXIMA", CHALAPPURAM KOZHIKODE</div>
             </div>
             <div class="content">
                 <div class="line">
                     Receipt No. <span style="color: red;">{{ rent.id }}</span> &emsp; Date: {{ rent.date|date:'d-m-Y' }}
                 </div>
                 <div class="line">
-                    Received with thanks from Mr./Mrs./M/s <span class="fw-bold">{{ rent.renter.name }}</span>
+                    Received with thanks from Mr./Mrs./M/s <span style="font-weight: bold;">{{ rent.renter.name }}</span>
                 </div>
                 <div class="line">
-                    the sum of rupees <span class="fw-bold">{{ rent.amount_paid|floatformat:2 }}</span>
+                    the sum of rupees <span style="font-weight: bold;">{{ rent.amount_paid|floatformat:2 }}</span>
                 </div>
                 <div class="line">
                     towards licence fees / Rent for the Room No. {{ rent.renter.room.name }} for the month {{ rent.pay_for|date:'F' }}

@@ -5,3 +5,6 @@ Renter/Renter/__pycache__/
 Renter/core/__pycache__/
 Renter/core/migrations/__pycache__/
 Renter/server.log
+Renter/users/migrations
+Renter/core/migrations
+Renter/db.sqlite3

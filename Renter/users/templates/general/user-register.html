@@ -11,7 +11,7 @@
                 <form method="post">
 					{% csrf_token %}
                     {% include "common/user-form.html" with form=form %}
-                    <button class="btn btn-primary btn-block" type="submit">Register</button>
+                    <button class="btn btn-primary btn-block" type="submit" id="btn-register">Register</button>
                 </form>
                 <p class="continue"><span>or register with</span></p>
                 <div class="social-login">
@@ -27,5 +27,12 @@
         <!-- //main content -->
     </div>
     <!-- //container -->
+    {% include 'common/footer.html' %}
 </div>
+{% endblock %}
+{% block scripts %}
+    {% load static %}
+	<script src="{% static "/js/validators/usernamevalidator.js" %}"></script>
+	<script src="{% static "/js/validators/emailvalidator.js" %}"></script>
+	<script src="{% static "/js/validators/passwordvalidator.js" %}"></script>
 {% endblock %}

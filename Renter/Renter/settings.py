@@ -39,6 +39,7 @@ AUTH_USER_MODEL = 'users.User'
 # Application definition
 
 INSTALLED_APPS = [
+    "daphne",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -78,6 +79,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Renter.wsgi.application'
+ASGI_APPLICATION = 'Renter.asgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
@@ -128,8 +130,6 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-WKHTMLTOX_PATH = join(BASE_DIR, "Renter", "wkhtmltox", "bin", "wkhtmltopdf.exe")
-
 LOGIN_URL = "users:login"
 LOGIN_REDIRECT_URL = "users:redirect-user"
 
@@ -145,3 +145,5 @@ TOKEN_EXPIRY = {
 }
 
 OTP_LENGTH = 6
+
+USER_REGISTRATION_KEY = "signup"

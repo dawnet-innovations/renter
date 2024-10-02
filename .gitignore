@@ -8,3 +8,8 @@ Renter/server.log
 Renter/users/migrations
 Renter/core/migrations
 Renter/db.sqlite3
+Renter/users/__pycache__/consumers.cpython-312.pyc
+Renter/users/__pycache__/routers.cpython-312.pyc
+Renter/users/__pycache__/utils.cpython-312.pyc
+Renter/users/google_auth/__pycache__/
+Renter/users/otp/__pycache__/

@@ -21,3 +21,5 @@
 ## admin
 - user: u_001_abdnzr
 - pass: 4pQ6<@W{~6+A
+---
+cpanel: [abdulnazar.xyz/cpanel](https://abdulnazar.xyz/cpanel)

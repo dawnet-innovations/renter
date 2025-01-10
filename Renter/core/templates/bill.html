@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,6 +11,7 @@
             font-family: Arial, sans-serif;
             padding: 10px;
         }
+
         .receipt {
             max-width: 100%;
             width: 600px;
@@ -18,32 +20,40 @@
             margin: 0 auto;
             box-sizing: border-box;
         }
+
         .header {
             text-align: center;
             font-weight: bold;
         }
+
         .header .title {
             font-size: 18px;
         }
+
         .header .name {
             font-size: 24px;
             margin: 10px 0;
         }
+
         .header .address {
             font-size: 14px;
         }
+
         .content {
             margin-top: 20px;
             line-height: 1.6;
         }
+
         .content .line {
             margin-bottom: 10px;
         }
+
         .footer {
             display: flex;
             justify-content: space-between;
             margin-top: 30px;
         }
+
         .footer .amount {
             border: 1px solid black;
             width: 100px;
@@ -52,6 +62,7 @@
             align-items: center;
             justify-content: center;
         }
+
         .signature {
             text-align: left;
         }
@@ -68,6 +79,7 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
         .print-button:hover {
             background-color: #0056b3;
         }
@@ -78,10 +90,12 @@
                 width: 90%;
                 padding: 15px;
             }
+
             .header .title,
             .header .name {
                 font-size: 16px;
             }
+
             .footer .amount {
                 width: auto;
                 font-size: 14px;
@@ -93,17 +107,21 @@
                 width: 100%;
                 padding: 10px;
             }
+
             .header .title,
             .header .name {
                 font-size: 14px;
             }
+
             .footer {
                 flex-direction: column;
                 align-items: flex-start;
             }
+
             .footer .amount {
                 margin-bottom: 10px;
             }
+
             .signature {
                 text-align: center;
                 width: 100%;
@@ -116,16 +134,22 @@
                 margin: 0;
                 padding: 0;
             }
+
             @page {
-                size: auto; /* Auto size the page */
-                margin: 10mm; /* Adjust margin to fit content */
+                size: auto;
+                /* Auto size the page */
+                margin: 10mm;
+                /* Adjust margin to fit content */
             }
+
             #print-bill {
-                display: none; /* Hide print button during print */
+                display: none;
+                /* Hide print button during print */
             }
         }
     </style>
 </head>
+
 <body>
 
     <section class="m-3">
@@ -136,20 +160,22 @@
             <div class="header">
                 <div class="title">LICENCE FEE / RENT RECEIPT</div>
                 <div class="name">{{ rent.renter.room.building.owner }}</div>
-                <div class="address">"MAXIMA", CHALAPPURAM KOZHIKODE</div>
+                <div class="address"></div>
             </div>
             <div class="content">
                 <div class="line">
                     Receipt No. <span style="color: red;">{{ rent.id }}</span> &emsp; Date: {{ rent.date|date:'d-m-Y' }}
                 </div>
                 <div class="line">
-                    Received with thanks from Mr./Mrs./M/s <span style="font-weight: bold;">{{ rent.renter.name }}</span>
+                    Received with thanks from Mr./Mrs./M/s <span style="font-weight: bold;">{{ rent.renter.name
+                        }}</span>
                 </div>
                 <div class="line">
                     the sum of rupees <span style="font-weight: bold;">{{ rent.amount_paid|floatformat:2 }}</span>
                 </div>
                 <div class="line">
-                    towards licence fees / Rent for the Room No. {{ rent.renter.room.name }} for the month {{ rent.pay_for|date:'F' }}
+                    towards licence fees / Rent for the Room No. {{ rent.renter.room.name }} for the month {{
+                    rent.pay_for|date:'F' }}
                 </div>
             </div>
             <div class="footer">
@@ -167,4 +193,5 @@
     </script>
 
 </body>
+
 </html>

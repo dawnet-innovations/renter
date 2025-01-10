@@ -1,8 +1,8 @@
 ﻿asgiref
 Django
 django-environ
-pdfkit
 sqlparse
 tzdata
 gunicorn
 python-dateutil
+whitenoise

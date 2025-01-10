@@ -5,3 +5,4 @@ pdfkit
 sqlparse
 tzdata
 gunicorn
+python-dateutil
